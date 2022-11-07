@@ -33,15 +33,37 @@ function Customer() {
       ];
 
       let data = [
-        {name: 'Spicy Chicken Sandwich'},
-        {name: 'Medium Fries'},
-        {name: 'Small Iced Tea'}
-      ]
+      ];
 
     function handleAdd(name){
         data.push({name: {name}});
-        // figure out how to re render order table after adding element
+
+        var tableRef = document.getElementById("order");
+        var newRow = tableRef.insertRow(-1);
+
+        var newCell = newRow.insertCell(0);
+        var newElem = document.createElement("td");
+        newElem.setAttribute("name", name);
+        newElem.setAttribute("type", "text");
+        newElem.setAttribute("value", name);
+        newElem.setAttribute("width","1000");
+        newElem.setAttribute("height","50");
+        newCell.appendChild(newElem);
+        newCell.innerHTML = name;
+
+        newCell = newRow.insertCell(1);
+        newElem = document.createElement("input");
+        newElem.setAttribute("type", "button");
+        newElem.setAttribute("value", "Delete Item");
+        newElem.setAttribute("onclick", "DeleteRowFunction(this)");
+        newCell.appendChild(newElem);
+        
         // figure out how to re render total after updating 
+    }
+
+    window.DeleteRowFunction = function DeleteRowFunction(e) {
+        var p = e.parentNode.parentNode;
+        p.parentNode.removeChild(p);
     }
 
     return (
@@ -50,16 +72,16 @@ function Customer() {
                 <label>Enter Your Name:</label><br/>
                 <input type="text" placeholder="Name" name="Name" /><br/><br/>
 
-                <table>
+                <table id = "order">
                     <tr>
                         <th>Order</th>
                         </tr>
                         {data.map((val, key) => {
-                        return (
-                            <tr key={key}>
-                            <td>{val.name}</td>
-                            </tr>
-                        )
+                            return (
+                                <tr key={key}>
+                                <td>{val.name}</td>
+                                </tr>
+                            )
                         })}
                     
                 </table><br/>
@@ -74,7 +96,11 @@ function Customer() {
                 </select>
                 <button
                     onClick={() => {
-                        handleAdd(document.getElementById("selectEntrees").value);
+                        var e = document.getElementById("selectEntrees");
+                        var text = e.options[e.selectedIndex].text;
+                        if(!(text === "--Choose an option--")){
+                            handleAdd(text);
+                        }
                     }}
                 >
                     Add Entree to order
@@ -83,14 +109,18 @@ function Customer() {
                 <label for = "sides">Sides</label><br/>
                 <select name="sides" id="selectSides">
                     {sides.map((option, index) => (
-                    <option key={index} value={option.value}>
-                        {option.text}
-                    </option>
+                        <option key={index} value={option.value}>
+                            {option.text}
+                        </option>
                     ))}
                 </select>
                 <button
                     onClick={() => {
-                        handleAdd(document.getElementById("selectSides").value);
+                        var e = document.getElementById("selectSides");
+                        var text = e.options[e.selectedIndex].text;
+                        if(!(text === "--Choose an option--")){
+                            handleAdd(text);
+                        }
                     }}
                 >
                     Add Side to order
@@ -106,7 +136,11 @@ function Customer() {
                 </select>
                 <button
                     onClick={() => {
-                        handleAdd(document.getElementById("selectDesserts").value);
+                        var e = document.getElementById("selectDesserts");
+                        var text = e.options[e.selectedIndex].text;
+                        if(!(text === "--Choose an option--")){
+                            handleAdd(text);
+                        }
                     }}
                 >
                     Add Dessert to order
@@ -122,7 +156,11 @@ function Customer() {
                 </select>
                 <button
                     onClick={() => {
-                        handleAdd(document.getElementById("selectDrinks").value);
+                        var e = document.getElementById("selectDrinks");
+                        var text = e.options[e.selectedIndex].text;
+                        if(!(text === "--Choose an option--")){
+                            handleAdd(text);
+                        }
                         // add to total
                     }}
                 >
