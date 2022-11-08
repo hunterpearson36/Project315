@@ -91,11 +91,11 @@ const Extra = () => {
       <button onClick={queryHandler}>
         query
       </button>
-      <p>entres:</p>
+      <p>entrees:</p>
       <tbody>
         {entres.map(item => (
           <tr key={item.structure_id}>
-            <td>{item.structure_id}</td>
+            {/* <td>{item.structure_id}</td> */}
             <td>{item.structure_name}</td>
             <td>{item.structure_price}</td>
           </tr>
@@ -106,7 +106,7 @@ const Extra = () => {
       <tbody>
         {sides.map(item => (
           <tr key={item.structure_id}>
-            <td>{item.structure_id}</td>
+            {/* <td>{item.structure_id}</td> */}
             <td>{item.structure_name}</td>
             <td>{item.structure_price}</td>
           </tr>
@@ -117,7 +117,7 @@ const Extra = () => {
       <tbody>
         {desserts.map(item => (
           <tr key={item.structure_id}>
-            <td>{item.structure_id}</td>
+            {/* <td>{item.structure_id}</td> */}
             <td>{item.structure_name}</td>
             <td>{item.structure_price}</td>
           </tr>
@@ -127,8 +127,8 @@ const Extra = () => {
       <p>drinks:</p>
       <tbody>
         {drinks.map(item => (
-          <tr key={item.structure_id}>
-            <td>{item.structure_id}</td>
+          <tr key={item.structure_id} name = {item.structure_name} price = {item.structure_price}>
+            {/* <td>{item.structure_id}</td> */}
             <td>{item.structure_name}</td>
             <td>{item.structure_price}</td>
           </tr>

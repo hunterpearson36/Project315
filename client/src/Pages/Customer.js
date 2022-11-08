@@ -1,36 +1,93 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
+import { sendQuery } from "../modules/Query";
 
 function Customer() {
+
+    const [isQuerying, setQuerying] = useState(false);
+    const [entrees, setEntrees] = useState([]);
+    const [sides, setSides] = useState([]);
+    const [desserts, setDesserts] = useState([]);
+    const [drinks, setDrinks] = useState([]);
+    
+
+    // entrees
+    const getEntrees = async () => {
+        await sendQuery("SELECT * from item_structures where structure_id >= 100 and structure_id < 200 order by structure_id;")
+        .then((response) => {
+            console.log("received response");
+            setEntrees(response);
+        }).catch((error) => {
+            console.error(error.message);
+        });
+    }
+    useEffect(() => {
+        if (isQuerying) {
+        getEntrees();
+        setQuerying(false);
+        }
+    }, [isQuerying]);
+
+    // sides
+    const getSides = async () => {
+        await sendQuery("SELECT * from item_structures where structure_id >= 200 and structure_id < 300 order by structure_id;")
+        .then((response) => {
+            console.log("received response");
+            setSides(response);
+        }).catch((error) => {
+            console.error(error.message);
+        });
+    }
+    useEffect(() => {
+        if (isQuerying) {
+        getSides();
+        setQuerying(false);
+        }
+    }, [isQuerying]);
+
+    // desserts
+    const getDesserts = async () => {
+        await sendQuery("SELECT * from item_structures where structure_id >= 300 and structure_id < 400 order by structure_id;")
+        .then((response) => {
+            console.log("received response");
+            setDesserts(response);
+        }).catch((error) => {
+            console.error(error.message);
+        });
+    }
+    useEffect(() => {
+        if (isQuerying) {
+        getDesserts();
+        setQuerying(false);
+        }
+    }, [isQuerying]);
+
+    // drinks
+    const getDrinks = async () => {
+        await sendQuery("SELECT * from item_structures where structure_id >= 400 and structure_id < 500 order by structure_id;")
+        .then((response) => {
+            console.log("received response");
+            setDrinks(response);
+        }).catch((error) => {
+            console.error(error.message);
+        });
+    }
+    useEffect(() => {
+        if (isQuerying) {
+        getDrinks();
+        setQuerying(false);
+        }
+    }, [isQuerying]);
+
+    useEffect(() => {
+        setQuerying(false);
+    }, []);
+
+    function queryHandler() {
+        setQuerying(true);
+    }
     let navigate = useNavigate();
     let total = 0;
-    let entrees = [
-        {value: '', text: '--Choose an option--'},
-        {value: 'Chicken Sandwich', text: 'Chicken Sandwich'},
-        {value: 'Cobb Salad', text: 'Cobb Salad'},
-        {value: 'Spicy Chicken Sandwich', text: 'Spicy Chicken Sandwich'},
-      ];
-    
-    let sides = [
-        {value: '', text: '--Choose an option--'},
-        {value: 'Small Fries', text: 'Small Fries'},
-        {value: 'Medium Fries', text: 'Medium Fries'},
-        {value: 'Large Fries', text: 'Large Fries'},
-      ];
-    
-    let desserts = [
-        {value: '', text: '--Choose an option--'},
-        {value: 'Small Chocolate Shake', text: 'Small Chocolate Shake'},
-        {value: 'Small Vanilla Shake', text: 'Small Vanilla Shake'},
-        {value: 'Small Strawberry Shake', text: 'Small Strawberry Shake'},
-      ];
-
-    let drinks = [
-        {value: '', text: '--Choose an option--'},
-        {value: 'Small Iced Tea', text: 'Small Iced Tea'},
-        {value: 'Medium Iced Tea', text: 'Medium Iced Tea'},
-        {value: 'Large Iced Tea', text: 'Large Iced Tea'},
-      ];
 
       let data = [
       ];
@@ -66,6 +123,10 @@ function Customer() {
         p.parentNode.removeChild(p);
     }
 
+    useEffect(() => {
+        queryHandler();
+      }, []);
+
     return (
         <div> 
             <div>
@@ -88,10 +149,10 @@ function Customer() {
 
                 <label for = "entrees">Entrees</label><br/>
                 <select name="entrees" id="selectEntrees">
-                    {entrees.map((option, index) => (
-                    <option key={index} value={option.value}>
-                        {option.text}
-                    </option>
+                    {entrees.map(item => (
+                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price}>
+                            {item.structure_name}
+                        </option>
                     ))}
                 </select>
                 <button
@@ -108,9 +169,9 @@ function Customer() {
 
                 <label for = "sides">Sides</label><br/>
                 <select name="sides" id="selectSides">
-                    {sides.map((option, index) => (
-                        <option key={index} value={option.value}>
-                            {option.text}
+                    {sides.map(item => (
+                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price}>
+                            {item.structure_name}
                         </option>
                     ))}
                 </select>
@@ -128,10 +189,10 @@ function Customer() {
 
                 <label for = "desserts">Desserts</label><br/>
                 <select name="desserts" id="selectDesserts">
-                    {desserts.map((option, index) => (
-                    <option key={index} value={option.value}>
-                        {option.text}
-                    </option>
+                    {desserts.map(item => (
+                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price}>
+                            {item.structure_name}
+                        </option>
                     ))}
                 </select>
                 <button
@@ -148,10 +209,10 @@ function Customer() {
 
                 <label for = "drinks">Drinks</label><br/>
                 <select name="drinks" id="selectDrinks">
-                    {drinks.map((option, index) => (
-                    <option key={index} value={option.value}>
-                        {option.text}
-                    </option>
+                    {drinks.map(item => (
+                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price}>
+                            {item.structure_name}
+                        </option>
                     ))}
                 </select>
                 <button
