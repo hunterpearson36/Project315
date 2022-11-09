@@ -3,7 +3,6 @@ import {useNavigate} from "react-router-dom";
 import { sendQuery } from "../modules/Query";
 
 function Customer() {
-
     const [isQuerying, setQuerying] = useState(false);
     const [entrees, setEntrees] = useState([]);
     const [sides, setSides] = useState([]);
@@ -87,16 +86,16 @@ function Customer() {
         setQuerying(true);
     }
     let navigate = useNavigate();
-    let total = 0;
 
       let data = [
       ];
 
-    function handleAdd(name){
+    function handleAdd(name, price){
         data.push({name: {name}});
 
         var tableRef = document.getElementById("order");
         var newRow = tableRef.insertRow(-1);
+        newRow.setAttribute("price", price);
 
         var newCell = newRow.insertCell(0);
         var newElem = document.createElement("td");
@@ -112,15 +111,26 @@ function Customer() {
         newElem = document.createElement("input");
         newElem.setAttribute("type", "button");
         newElem.setAttribute("value", "Delete Item");
+
         newElem.setAttribute("onclick", "DeleteRowFunction(this)");
         newCell.appendChild(newElem);
-        
+        updateTotal(price);
         // figure out how to re render total after updating 
     }
 
     window.DeleteRowFunction = function DeleteRowFunction(e) {
         var p = e.parentNode.parentNode;
         p.parentNode.removeChild(p);
+        var elem = document.getElementById("total");
+        var amount = parseFloat(elem.innerHTML);
+        var price = (e.parentNode.parentNode.getAttribute("price"));
+        elem.innerHTML = parseFloat(Number(amount) - Number(price)).toFixed(2);
+    }
+
+    function updateTotal(price){
+        var elem = document.getElementById("total");
+        var amount = parseFloat(elem.innerHTML);
+        elem.innerHTML = parseFloat(Number(amount) + Number(price)).toFixed(2);
     }
 
     useEffect(() => {
@@ -159,8 +169,9 @@ function Customer() {
                     onClick={() => {
                         var e = document.getElementById("selectEntrees");
                         var text = e.options[e.selectedIndex].text;
+                        var price = e.options[e.selectedIndex].getAttribute("price");
                         if(!(text === "--Choose an option--")){
-                            handleAdd(text);
+                            handleAdd(text, price);
                         }
                     }}
                 >
@@ -179,8 +190,9 @@ function Customer() {
                     onClick={() => {
                         var e = document.getElementById("selectSides");
                         var text = e.options[e.selectedIndex].text;
+                        var price = e.options[e.selectedIndex].getAttribute("price");
                         if(!(text === "--Choose an option--")){
-                            handleAdd(text);
+                            handleAdd(text, price);
                         }
                     }}
                 >
@@ -199,8 +211,9 @@ function Customer() {
                     onClick={() => {
                         var e = document.getElementById("selectDesserts");
                         var text = e.options[e.selectedIndex].text;
+                        var price = e.options[e.selectedIndex].getAttribute("price");
                         if(!(text === "--Choose an option--")){
-                            handleAdd(text);
+                            handleAdd(text, price);
                         }
                     }}
                 >
@@ -219,8 +232,9 @@ function Customer() {
                     onClick={() => {
                         var e = document.getElementById("selectDrinks");
                         var text = e.options[e.selectedIndex].text;
+                        var price = e.options[e.selectedIndex].getAttribute("price");
                         if(!(text === "--Choose an option--")){
-                            handleAdd(text);
+                            handleAdd(text, price);
                         }
                         // add to total
                     }}
@@ -229,12 +243,11 @@ function Customer() {
                 </button><br/>
                 <br/>
 
-                <label>TOTAL: ${parseFloat(total).toFixed(2)}</label><br/><br/>
+                <label>TOTAL: $</label> <label id = "total">0.00</label><br/><br/>
 
                 <button
                 onClick={() => {
                     navigate("/order-placed");
-                    total = 0;
                   }}
                 >
                     Create Order
@@ -242,7 +255,6 @@ function Customer() {
                 <button
                 onClick={() => {
                     navigate("/");
-                    total = 0;
                   }}
                 >
                     Cancel Order
