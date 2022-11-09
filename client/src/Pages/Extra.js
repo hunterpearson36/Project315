@@ -85,6 +85,22 @@ const Extra = () => {
   function queryHandler() {
     setQuerying(true);
   }
+
+  function checkExistsHandler(){
+    var id = 101
+    var question = "select exists(select structure_id from item_structures where structure_id = " + id + ");";
+    checkExists(question);
+  }
+
+  const checkExists = async (question) => {
+    await sendQuery(question)
+      .then((response) => {
+        console.log("received response");
+        document.getElementById("test").innerHTML = response[0].exists;
+      }).catch((error) => {
+        console.error(error.message);
+      });
+  }
   
   return ( 
     <div>
@@ -134,7 +150,12 @@ const Extra = () => {
           </tr>
         ))}
       </tbody>
+      <button onClick={checkExistsHandler}>
+        Check exists
+      </button>
+      <p id = "test"></p>
     </div>
+    
   );
 
   
