@@ -21,13 +21,13 @@ function Home() {
           Change to Server GUI
         </button>
 
-        <button 
+        {/* <button 
           onClick={() => {
             navigate("/manager");
           }}
         >         
           Change to Manager GUI
-        </button>
+        </button> */}
       </div>
     );
 }
