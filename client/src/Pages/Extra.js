@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { sendQuery } from "../modules/Query";
+import { sendQuery, sendUpdate } from "../modules/Query";
 
 const Extra = () => {
 
@@ -101,7 +101,16 @@ const Extra = () => {
         console.error(error.message);
       });
   }
-  
+
+  const getResponse = async () => {
+    await sendUpdate("UPDATE item_structures SET structure_price = " + 7.10 + " WHERE structure_name = 'pumpkin s item';")
+      .then((respons) => {
+        console.log("received response");
+      }).catch((error) => {
+        console.error(error.message);
+      });
+  }
+
   return ( 
     <div>
       <button onClick={queryHandler}>
@@ -152,6 +161,9 @@ const Extra = () => {
       </tbody>
       <button onClick={checkExistsHandler}>
         Check exists
+      </button>
+      <button onClick={getResponse}>
+        Get Response
       </button>
       <p id = "test"></p>
     </div>
