@@ -22,6 +22,14 @@ function Manager() {
             >         
             Go to Ingredients Table
             </button>
+            <br/>
+            <button 
+                onClick={() => {
+                navigate("/");
+                }}
+            >         
+            Back to Home Page
+            </button>
         </div>
 
           
