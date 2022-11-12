@@ -5,7 +5,6 @@ import { sendQuery, sendUpdate } from "../modules/Query";
 const ItemStructures = () => {
 
   let navigate = useNavigate();
-  const [isQuerying, setQuerying] = useState(false);
   const [items, setItems] = useState([]);
   
   const getItems = async () => {
@@ -17,40 +16,63 @@ const ItemStructures = () => {
         console.error(error.message);
       });
   }
-  useEffect(() => {
-    if (isQuerying) {
-      getItems();
-      setQuerying(false);
+
+  const updateData = async (statement) => {
+    await sendUpdate(statement)
+      .then((response) => {
+        console.log("received response");
+      }).catch((error) => {
+        console.error(error.message);
+      });
+  }
+
+  function deleteItem(){
+    var itemName = document.getElementById("delete").value;
+    var rows = document.getElementsByClassName("items")
+    var found = 0;
+    for(var i = 0; i < rows.length; i++){
+      if(found === 0){
+        if(rows[i].id === itemName){
+          document.getElementById("deleteMessage").innerHTML = itemName +  " has been deleted";
+          rows[i].parentNode.removeChild(rows[i]);
+          found++;
+          //updateData("DELETE FROM item_structures WHERE structure_name = '" + itemName + "';")
+        }
+      }
     }
-  }, [isQuerying]);
-
-  useEffect(() => {
-    setQuerying(false);
-  }, []);
-
-  function queryHandler() {
-    setQuerying(true);
+    if(found === 0){
+      document.getElementById("deleteMessage").innerHTML = "No item with name " + itemName + " has been found";
+    }
   }
 
   useEffect(() => {
-    queryHandler();
+    getItems();
   }, []);
 
     return (
         <div>
-            <p>Items:</p>
+            <p>Item:</p>
             <button
                 onClick={() => {
                     navigate("/manager");
                 }}
             >
                 Back To Manager
-            </button><br/><br/>
-            <tbody>
+            </button> <br/> 
+            <label>Delete Item: </label>
+            <input type="text" placeholder="Item Name" id="delete"/> 
+            <button
+              onClick={() => {
+                deleteItem();
+              }}
+            >
+              Delete Item
+            </button> <p id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</p>
+            <br/>
+            <table>
+              <tbody>
                 {items.map(item => (
-                <tr key={item.structure_id}>
-                    <td width = "120"><button>DELETE ITEM</button></td>
-                    {/* <td>{item.structure_id}</td> */}
+                <tr class="items" id={item.structure_name}>
                     <td width = "200">{item.structure_name}</td>
                     <td width = "50">{item.structure_price}</td>
                     <td width = "100"><input type = "text" placeholder="" name="update"/></td>
@@ -58,7 +80,8 @@ const ItemStructures = () => {
                     
                 </tr>
                 ))}
-            </tbody>
+              </tbody>
+            </table>
         </div>
     );
 }

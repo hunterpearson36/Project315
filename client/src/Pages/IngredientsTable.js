@@ -13,8 +13,6 @@ const IngredientsTable = () => {
         setIngred(response);
       }).catch((error) => {
         console.error(error.message);
-      }).then((response) => {
-        buttonFunctionality();
       })
   }
 
@@ -26,25 +24,25 @@ const IngredientsTable = () => {
         console.error(error.message);
       });
   }
-  
-  // functionality is running before the buttons are actually being generated.
-  // Need to change it so that everything gets generated, then functionality is added
-  function buttonFunctionality(){
-    console.log("here")
-    var buttons = document.getElementsByClassName("deleteButton");
-    var buttonsCount = buttons.length;
-    for (var i = 0 ; i < buttonsCount; i++){
-      buttons[i].setAttribute("onclick", "DeleteRowFunction(this)");
-      console.log(buttons[i]) 
+
+  function deleteIngredient(){
+    var ingredName = document.getElementById("delete").value;
+    var rows = document.getElementsByClassName("ingreds")
+    var found = 0;
+    for(var i = 0; i < rows.length; i++){
+      if(found === 0){
+        if(rows[i].id === ingredName){
+          document.getElementById("deleteMessage").innerHTML = ingredName +  " has been deleted";
+          rows[i].parentNode.removeChild(rows[i]);
+          found++;
+          //updateData("DELETE FROM ingredients WHERE ingred_name = '" + ingredName + "' and ingred_id < 2000;")
+        }
+      }
+    }
+    if(found === 0){
+      document.getElementById("deleteMessage").innerHTML = "No ingredient with name " + ingredName + " has been found";
     }
   }
-
-  // this works
-  window.DeleteRowFunction = function DeleteRowFunction(e) {
-    var p = e.parentNode.parentNode;
-    p.parentNode.removeChild(p); 
-}
-
 
   useEffect(() => {
     getIngred();
@@ -59,17 +57,21 @@ const IngredientsTable = () => {
                 }}
             >
                 Back To Manager
-            </button><br/><br/>
+            </button> <br/> 
+            <label>Delete Ingredient: </label>
+            <input type="text" placeholder="Ingredient Name" id="delete"/> 
+            <button
+              onClick={() => {
+                deleteIngredient();
+              }}
+            >
+              Delete Ingredient
+            </button> <p id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</p>
+            <br/>
             <table>
               <tbody>
                 {ingredients.map(item => (
-                <tr key={item.ingred_id}>
-                    <td width = "180">
-                        <button id = {item.ingred_id} className = "deleteButton">
-                            DELETE INGREDIENT
-                        </button>
-                    </td>
-                    {/* <td>{item.structure_id}</td> */}
+                <tr class="ingreds" id={item.ingred_name}>
                     <td width = "200">{item.ingred_name}</td>
                     <td width = "50">{item.ingred_qty}</td>
                     <td width = "100"><input type = "text" placeholder="" name="update"/></td>
