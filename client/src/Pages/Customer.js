@@ -85,6 +85,7 @@ function Customer() {
     function queryHandler() {
         setQuerying(true);
     }
+    
     let navigate = useNavigate();
 
       let data = [

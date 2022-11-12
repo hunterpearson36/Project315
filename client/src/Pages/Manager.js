@@ -6,12 +6,13 @@ function Manager() {
     return (
         <div>
             Manager GUI
+            <br/>
             <button 
                 onClick={() => {
                 navigate("/manager/item_structures-table");
                 }}
             >         
-            Go to item structures list
+            Go to Items Table
             </button>
 
             <button 
@@ -19,7 +20,7 @@ function Manager() {
                 navigate("/manager/ingredients-table");
                 }}
             >         
-            Go to ingredients list
+            Go to Ingredients Table
             </button>
         </div>
 
