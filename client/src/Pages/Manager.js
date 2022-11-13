@@ -40,6 +40,14 @@ function Manager() {
             <br/>
             <button 
                 onClick={() => {
+                navigate("/manager/reports");
+                }}
+            >         
+            Go To Reports Section
+            </button>
+            <br/>
+            <button 
+                onClick={() => {
                 navigate("/");
                 }}
             >         

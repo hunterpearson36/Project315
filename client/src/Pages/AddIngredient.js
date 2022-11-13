@@ -47,7 +47,6 @@ const AddIngredient = () => {
 
     function createIngredient(){
         var id = getID();
-        console.log(id);
         var ingredName = document.getElementById("ingredName").value;
         if(ingredName === ""){
             document.getElementById("message").innerHTML = "No name entered, cancelling ingredient creation";
