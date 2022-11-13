@@ -27,6 +27,10 @@ const IngredientsTable = () => {
 
   function deleteIngredient(){
     var ingredName = document.getElementById("delete").value;
+    if(ingredName.length === 0){
+      document.getElementById("deleteMessage").innerHTML = "Please enter the ingredient name to be deleted";
+      return;
+    }
     var rows = document.getElementsByClassName("ingreds")
     var found = 0;
     for(var i = 0; i < rows.length; i++){

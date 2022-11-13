@@ -28,6 +28,10 @@ const ItemStructures = () => {
 
   function deleteItem(){
     var itemName = document.getElementById("delete").value;
+    if(itemName.length === 0){
+      document.getElementById("deleteMessage").innerHTML = "Please enter the item name to be deleted";
+      return;
+    }
     var rows = document.getElementsByClassName("items")
     var found = 0;
     for(var i = 0; i < rows.length; i++){

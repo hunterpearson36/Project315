@@ -8,6 +8,8 @@ import OrderPlaced from "./Pages/OrderPlaced";
 import ItemStructures from "./Pages/ItemStructures";
 import IngredientsTable from "./Pages/IngredientsTable";
 import Extra from "./Pages/Extra";
+import AddItem from "./Pages/AddItem";
+import AddIngredient from "./Pages/AddIngredient";
 import {Routes, Route} from "react-router-dom";
 
 const App = () => {
@@ -20,6 +22,8 @@ const App = () => {
         <Route path="/order-placed" element={<OrderPlaced />} />
         <Route path="/manager/item_structures-table" element={<ItemStructures />} />
         <Route path="/manager/ingredients-table" element={<IngredientsTable />} />
+        <Route path="/manager/add-item" element={<AddItem />} />
+        <Route path="/manager/add-ingredient" element={<AddIngredient />} />
         <Route path="/extra" element={<Extra />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

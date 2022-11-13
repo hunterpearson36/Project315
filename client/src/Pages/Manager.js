@@ -25,6 +25,21 @@ function Manager() {
             <br/>
             <button 
                 onClick={() => {
+                navigate("/manager/add-item");
+                }}
+            >         
+            Add New Item
+            </button>
+            <button 
+                onClick={() => {
+                navigate("/manager/add-ingredient");
+                }}
+            >         
+            Add New Ingredient
+            </button>
+            <br/>
+            <button 
+                onClick={() => {
                 navigate("/");
                 }}
             >         
