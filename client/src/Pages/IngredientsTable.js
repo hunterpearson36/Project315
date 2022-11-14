@@ -1,20 +1,8 @@
-import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
-import { sendQuery, sendUpdate } from "../modules/Query";
+import { sendUpdate } from "../modules/Query";
 
 const IngredientsTable = () => {
   let navigate = useNavigate();
-  const [ingredients, setIngred] = useState([]);
-  
-  const getIngred = async () => {
-    await sendQuery("SELECT * from ingredients where ingred_id < 2000 order by ingred_id;")
-      .then((response) => {
-        console.log("received response");
-        setIngred(response);
-      }).catch((error) => {
-        console.error(error.message);
-      })
-  }
 
   const updateData = async (statement) => {
     await sendUpdate(statement)
@@ -48,9 +36,28 @@ const IngredientsTable = () => {
     }
   }
 
-  useEffect(() => {
-    getIngred();
-  }, []);
+  function updateIngredient(value){
+    var rows = document.getElementsByClassName("ingreds");
+    var quantity;
+    for(var i = 0; i < rows.length; i++){
+      if(Number(rows[i].id) === Number(value)){
+        quantity = rows[i].childNodes[2].childNodes[0].value;
+        if(quantity === ""){
+          document.getElementById("updateMessage").innerHTML = "Please enter the new quantity";
+          return;
+        }
+        if(quantity.substring(0,1) === "-"){
+          document.getElementById("updateMessage").innerHTML = "Quantity cannot be a negatitve number";
+          return;
+        }
+        rows[i].childNodes[1].innerHTML = quantity;
+        break;
+      }
+    }
+    var out = "UPDATE ingredients SET ingred_qty = " + quantity + " WHERE ingred_ID = "+ value +";";
+    document.getElementById("updateMessage").innerHTML = "";
+    updateData(out);
+  }
 
     return (
         <div>
@@ -70,16 +77,24 @@ const IngredientsTable = () => {
               }}
             >
               Delete Ingredient
-            </button> <p id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</p>
-            <br/>
-            <table>
+            </button> <br/><label id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</label>
+            <br/><label id="updateMessage"> </label>
+            <table id = "ingredTable">
               <tbody>
-                {ingredients.map(item => (
-                <tr class="ingreds" id={item.ingred_name}>
+                {window.ingred.map(item => (
+                <tr class="ingreds" id={item.ingred_id}>
                     <td width = "200">{item.ingred_name}</td>
                     <td width = "50">{item.ingred_qty}</td>
-                    <td width = "100"><input type = "text" placeholder="" name="update"/></td>
-                    <td width = "130"><button>Update Quantity</button></td>
+                    <td width = "100"><input type = "number" placeholder="" name="update"/></td>
+                    <td width = "130">
+                      <button id = {item.ingred_id}
+                        onClick={() => {
+                          updateIngredient(item.ingred_id);
+                        }}
+                      >
+                        Update Quantity
+                      </button>
+                    </td>
                     
                 </tr>
                 ))}

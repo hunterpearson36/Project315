@@ -1,15 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
+import { sendQuery } from "../modules/Query";
 
 function Manager() {
     let navigate = useNavigate();
+    const [ingredients, setIngred] = useState([]);
+
+    const getIngred = async () => {
+        await sendQuery("SELECT * from ingredients where ingred_id < 2000 order by ingred_id;")
+          .then((response) => {
+            console.log("received response");
+            setIngred(response);
+            window.ingred = response;
+          }).catch((error) => {
+            console.error(error.message);
+          })
+      }
+
+      useEffect(() => {
+        getIngred();
+      }, []);
+
     return (
         <div>
             Manager GUI
             <br/>
             <button 
                 onClick={() => {
-                navigate("/manager/item_structures-table");
+                navigate("/manager/items-table");
                 }}
             >         
             Go to Items Table
