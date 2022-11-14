@@ -24,7 +24,7 @@ const ItemStructures = () => {
     var found = 0;
     for(var i = 0; i < rows.length; i++){
       if(found === 0){
-        if(rows[i].id === itemName){
+        if(rows[i].childNodes[0].id === itemName){
           document.getElementById("deleteMessage").innerHTML = itemName +  " has been deleted";
           rows[i].parentNode.removeChild(rows[i]);
           found++;
@@ -88,7 +88,7 @@ const ItemStructures = () => {
               <tbody>
                 {window.itm.map(item => (
                 <tr class="items" id={item.structure_id}>
-                    <td width = "200">{item.structure_name}</td>
+                    <td width = "200" id ={item.structure_name}>{item.structure_name}</td>
                     <td width = "50">{item.structure_price}</td>
                     <td width = "100"><input type = "text" placeholder="" name="update"/></td>
                     <td width = "130">

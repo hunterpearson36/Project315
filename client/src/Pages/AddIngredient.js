@@ -55,12 +55,12 @@ const AddIngredient = () => {
         }
         var ingredQty = document.getElementById("ingredQty").value;
         if(ingredQty === ""){
-            document.getElementById("message").innerHTML = "No price entered, cancelling ingredient creation";
+            document.getElementById("message").innerHTML = "No ingredient quantity entered, cancelling ingredient creation";
             reset();
             return;
         }
         if(ingredQty.substring(0,1) === "-"){
-            document.getElementById("message").innerHTML = "Price cannot be negative, cancelling ingredient creation";
+            document.getElementById("message").innerHTML = "Quantity cannot be negative, cancelling ingredient creation";
             reset();
             return;
         }
@@ -77,15 +77,31 @@ const AddIngredient = () => {
         out += orderDate + "'";
 
         var create = "INSERT INTO ingredients VALUES (" + out + ");";
+        var restockQty = document.getElementById("restock").value;
+        if(restockQty === ""){
+            document.getElementById("message").innerHTML = "No minimum stock entered, cancelling ingredient creation";
+            reset();
+            return;
+        }
+        if(restockQty.substring(0,1) === "-"){
+            document.getElementById("message").innerHTML = "Minimum stock cannot be negative, cancelling ingredient creation";
+            reset();
+            return;
+        }
+        var restockOut = id + ", '" + ingredName + "', " + restockQty;
+        var restockCreate = "INSERT INTO restock VALUES (" + restockOut + ");";
         updateData(create);
+        updateData(restockCreate);
         document.getElementById("message").innerHTML = "New ingredient with name " + ingredName + " has been created!";
         reset();
+        
     }
 
     function reset(){
         document.getElementById("ingredName").value = "";
         document.getElementById("ingredQty").value = "";
         document.getElementById("expire").value = "";
+        document.getElementById("restock").value = "";
     }
 
     function getID(){
@@ -125,6 +141,8 @@ const AddIngredient = () => {
             </select>
             <br/>
             <labeL>Expiration Date:</labeL><input type = "date" id = "expire"/>
+            <br/>
+            <labeL>Minimum Stock:</labeL><input type = "number" id = "restock"/>
             <br/>
             <br/>
             <button

@@ -1,17 +1,15 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import { sendQuery } from "../modules/Query";
 
 function Manager() {
     let navigate = useNavigate();
-    const [ingredients, setIngred] = useState([]);
-    const [items, setItems] = useState([]);
+
 
     const getIngred = async () => {
         await sendQuery("SELECT * from ingredients where ingred_id < 2000 order by ingred_id;")
           .then((response) => {
             console.log("received response");
-            setIngred(response);
             window.ingred = response;
           }).catch((error) => {
             console.error(error.message);
@@ -22,8 +20,17 @@ function Manager() {
         await sendQuery("SELECT * from item_structures order by structure_id;")
         .then((response) => {
             console.log("received response");
-            setItems(response);
             window.itm = response;
+        }).catch((error) => {
+            console.error(error.message);
+        });
+    }
+
+    const getRestock = async () => {
+        await sendQuery("SELECT * from restock order by restock_id;")
+        .then((response) => {
+            console.log("received response");
+            window.restock = response;
         }).catch((error) => {
             console.error(error.message);
         });
@@ -32,6 +39,7 @@ function Manager() {
       useEffect(() => {
         getIngred();
         getItems();
+        getRestock();
       }, []);
 
     return (

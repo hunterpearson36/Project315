@@ -13,6 +13,7 @@ import AddIngredient from "./Pages/AddIngredient";
 import Reports from "./Pages/Reports";
 import SalesReport from "./Pages/ReportPages/SalesReport";
 import ExcessReport from "./Pages/ReportPages/ExcessReport";
+import Restock from "./Pages/ReportPages/Restock";
 import RestockReport from "./Pages/ReportPages/RestockReport";
 import {Routes, Route} from "react-router-dom";
 
@@ -31,7 +32,8 @@ const App = () => {
         <Route path="/manager/reports" element={<Reports />} />
         <Route path="/manager/reports/sales-report" element={<SalesReport />} />
         <Route path="/manager/reports/excess-report" element={<ExcessReport />} />
-        <Route path="/manager/reports/restock-report" element={<RestockReport />} />
+        <Route path="/manager/reports/restock-report" element={<Restock />} />
+        <Route path="/manager/reports/restock-report/report" element={<RestockReport />} />
         <Route path="/extra" element={<Extra />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>

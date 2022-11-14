@@ -23,11 +23,12 @@ const IngredientsTable = () => {
     var found = 0;
     for(var i = 0; i < rows.length; i++){
       if(found === 0){
-        if(rows[i].id === ingredName){
+        if(rows[i].childNodes[0].id === ingredName){
           document.getElementById("deleteMessage").innerHTML = ingredName +  " has been deleted";
           rows[i].parentNode.removeChild(rows[i]);
           found++;
           //updateData("DELETE FROM ingredients WHERE ingred_name = '" + ingredName + "' and ingred_id < 2000;")
+          //updateData("DELETE FROM restock WHERE restock_name = '" + ingredName + "';")
         }
       }
     }
@@ -83,7 +84,7 @@ const IngredientsTable = () => {
               <tbody>
                 {window.ingred.map(item => (
                 <tr class="ingreds" id={item.ingred_id}>
-                    <td width = "200">{item.ingred_name}</td>
+                    <td width = "200" id = {item.ingred_name}>{item.ingred_name}</td>
                     <td width = "50">{item.ingred_qty}</td>
                     <td width = "100"><input type = "number" placeholder="" name="update"/></td>
                     <td width = "130">
