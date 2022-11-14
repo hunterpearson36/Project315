@@ -5,6 +5,7 @@ import { sendQuery } from "../modules/Query";
 function Manager() {
     let navigate = useNavigate();
     const [ingredients, setIngred] = useState([]);
+    const [items, setItems] = useState([]);
 
     const getIngred = async () => {
         await sendQuery("SELECT * from ingredients where ingred_id < 2000 order by ingred_id;")
@@ -17,8 +18,20 @@ function Manager() {
           })
       }
 
+    const getItems = async () => {
+        await sendQuery("SELECT * from item_structures order by structure_id;")
+        .then((response) => {
+            console.log("received response");
+            setItems(response);
+            window.itm = response;
+        }).catch((error) => {
+            console.error(error.message);
+        });
+    }
+
       useEffect(() => {
         getIngred();
+        getItems();
       }, []);
 
     return (

@@ -59,6 +59,11 @@ const AddIngredient = () => {
             reset();
             return;
         }
+        if(ingredQty.substring(0,1) === "-"){
+            document.getElementById("message").innerHTML = "Price cannot be negative, cancelling ingredient creation";
+            reset();
+            return;
+        }
         var storageLocation = document.getElementById("ingredLoc").value;
         var orderDate = getDateTime();
         var expire = document.getElementById("expire").value;

@@ -1,21 +1,9 @@
-import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
-import { sendQuery, sendUpdate } from "../modules/Query";
+import { sendUpdate } from "../modules/Query";
 
 const ItemStructures = () => {
 
   let navigate = useNavigate();
-  const [items, setItems] = useState([]);
-  
-  const getItems = async () => {
-    await sendQuery("SELECT * from item_structures order by structure_id;")
-      .then((response) => {
-        console.log("received response");
-        setItems(response);
-      }).catch((error) => {
-        console.error(error.message);
-      });
-  }
 
   const updateData = async (statement) => {
     await sendUpdate(statement)
@@ -49,9 +37,29 @@ const ItemStructures = () => {
     }
   }
 
-  useEffect(() => {
-    getItems();
-  }, []);
+  function updateIngredient(value){
+    var rows = document.getElementsByClassName("items");
+    var quantity;
+    console.log(rows);
+    for(var i = 0; i < rows.length; i++){
+      if(Number(rows[i].id) === Number(value)){
+        quantity = rows[i].childNodes[2].childNodes[0].value;
+        if(quantity === ""){
+          document.getElementById("updateMessage").innerHTML = "Please enter the new quantity";
+          return;
+        }
+        if(quantity.substring(0,1) === "-"){
+          document.getElementById("updateMessage").innerHTML = "Quantity cannot be a negatitve number";
+          return;
+        }
+        rows[i].childNodes[1].innerHTML = quantity;
+        break;
+      }
+    }
+    var out = "UPDATE item_structures SET structure_price = " + quantity + " WHERE structure_id = "+ value +";";
+    document.getElementById("updateMessage").innerHTML = "";
+    updateData(out);
+  }
 
     return (
         <div>
@@ -71,16 +79,27 @@ const ItemStructures = () => {
               }}
             >
               Delete Item
-            </button> <p id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</p>
+            </button> <br/> 
+            <label id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</label>
+            <br/>
+            <label id="updateMessage"></label>
             <br/>
             <table>
               <tbody>
-                {items.map(item => (
-                <tr class="items" id={item.structure_name}>
+                {window.itm.map(item => (
+                <tr class="items" id={item.structure_id}>
                     <td width = "200">{item.structure_name}</td>
                     <td width = "50">{item.structure_price}</td>
                     <td width = "100"><input type = "text" placeholder="" name="update"/></td>
-                    <td width = "130"><button>Update Price</button></td>
+                    <td width = "130">
+                      <button
+                        onClick={() => {
+                          updateIngredient(item.structure_id);
+                        }}
+                      >
+                        Update Price
+                      </button>
+                    </td>
                     
                 </tr>
                 ))}
