@@ -5,7 +5,7 @@ function OrderPlaced() {
     let navigate = useNavigate();
     return( 
         <div>
-            Your order has been placed. Thank You! <br/>
+            Your order(#{window.orderId}) has been placed. Thank You! <br/>
             <button 
                 onClick={() => {
                     navigate("/");
