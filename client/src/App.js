@@ -11,6 +11,7 @@ import Extra from "./Pages/Extra";
 import AddItem from "./Pages/AddItem";
 import AddIngredient from "./Pages/AddIngredient";
 import Reports from "./Pages/Reports";
+import Sales from "./Pages/ReportPages/Sales";
 import SalesReport from "./Pages/ReportPages/SalesReport";
 import ExcessReport from "./Pages/ReportPages/ExcessReport";
 import Restock from "./Pages/ReportPages/Restock";
@@ -30,7 +31,8 @@ const App = () => {
         <Route path="/manager/add-item" element={<AddItem />} />
         <Route path="/manager/add-ingredient" element={<AddIngredient />} />
         <Route path="/manager/reports" element={<Reports />} />
-        <Route path="/manager/reports/sales-report" element={<SalesReport />} />
+        <Route path="/manager/reports/sales-report" element={<Sales />} />
+        <Route path="/manager/reports/sales-report/report" element={<SalesReport />} />
         <Route path="/manager/reports/excess-report" element={<ExcessReport />} />
         <Route path="/manager/reports/restock-report" element={<Restock />} />
         <Route path="/manager/reports/restock-report/report" element={<RestockReport />} />
