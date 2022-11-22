@@ -1,36 +1,59 @@
 import React from "react";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
+import { getCookie } from "../modules/Cookies/CookieFunctions"
+import { getButton, isLoggedIn } from "../modules/Google/Status";
 
 function Home() {
-    let navigate = useNavigate();
+  let navigate = useNavigate();
 
-    return(
+  function permRoutes() {
+    if (isLoggedIn()) {
+      return (
+        <div>
+          <p>
+            Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
+          </p>
+          <button
+            onClick={() => {
+              navigate("/server");
+            }}
+          >
+            Change to Server GUI
+          </button>
+
+          <button
+            onClick={() => {
+              navigate("/manager");
+            }}
+          >
+            Change to Manager GUI
+          </button>
+        </div>
+
+      );
+    }
+    return (
       <div>
-        <button class = "customer"
+        <button className = "customer"
           onClick={() => {
             navigate("/customer");
           }}
-        >         
+        >
           Change to Customer GUI
         </button>
-
-        <button class = "other"
-          onClick={() => {
-            navigate("/server");
-          }}
-        >         
-          Change to Server GUI
-        </button>
-
-        <button class = "other"
-          onClick={() => {
-            navigate("/manager");
-          }}
-        >         
-          Change to Manager GUI
-        </button>
       </div>
+
     );
+  }
+
+  return (
+    <div>
+      {getButton()}
+      {permRoutes()}
+    </div>
+  );
 }
 
 export default Home;
