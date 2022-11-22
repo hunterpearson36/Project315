@@ -1,6 +1,15 @@
 import { sendQuery } from "../Query";
+import { gapi } from 'gapi-script';
 
 function home() {
+    const AUTH_start = () => {
+        console.log("started OAUTH load");
+        gapi.auth2.init({
+            clientId: process.env.REACT_APP_OAUTH_CLIENT_ID,
+            scope: ""
+          });
+    }
+
     const getEntrees = async () => {
         await sendQuery("SELECT * from item_structures where structure_id >= 100 and structure_id < 200 order by structure_id;")
             .then((response) => {
@@ -74,6 +83,7 @@ function home() {
             });
     }
 
+    gapi.load('auth2', AUTH_start);
     getEntrees();
     getSides();
     getDesserts();
