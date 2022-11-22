@@ -1,4 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
+
+import { startup } from "./modules/Startup/Startup";
+
+import {Routes, Route} from "react-router-dom";
+
 import Home from "./Pages/Home";
 import Customer from "./Pages/Customer";
 import Server from "./Pages/Server";
@@ -16,9 +21,13 @@ import SalesReport from "./Pages/ReportPages/SalesReport";
 import ExcessReport from "./Pages/ReportPages/ExcessReport";
 import Restock from "./Pages/ReportPages/Restock";
 import RestockReport from "./Pages/ReportPages/RestockReport";
-import {Routes, Route} from "react-router-dom";
 
 const App = () => {
+
+  useEffect(() => {
+    startup();
+  }, []);
+
   return ( 
       <Routes>
         <Route exact path="/" element={<Home />} />

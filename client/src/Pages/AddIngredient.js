@@ -140,9 +140,9 @@ const AddIngredient = () => {
                 <option>freezer</option>
             </select>
             <br/>
-            <labeL>Expiration Date:</labeL><input type = "date" id = "expire"/>
+            <label>Expiration Date:</label><input type = "date" id = "expire"/>
             <br/>
-            <labeL>Minimum Stock:</labeL><input type = "number" id = "restock"/>
+            <label>Minimum Stock:</label><input type = "number" id = "restock"/>
             <br/>
             <br/>
             <button

@@ -1,46 +1,8 @@
-import React, { useEffect } from "react";
+import React from "react";
 import {useNavigate} from "react-router-dom";
-import { sendQuery } from "../modules/Query";
 
 function Manager() {
     let navigate = useNavigate();
-
-
-    const getIngred = async () => {
-        await sendQuery("SELECT * from ingredients where ingred_id < 2000 order by ingred_id;")
-          .then((response) => {
-            console.log("received response");
-            window.ingred = response;
-          }).catch((error) => {
-            console.error(error.message);
-          })
-      }
-
-    const getItems = async () => {
-        await sendQuery("SELECT * from item_structures order by structure_id;")
-        .then((response) => {
-            console.log("received response");
-            window.itm = response;
-        }).catch((error) => {
-            console.error(error.message);
-        });
-    }
-
-    const getRestock = async () => {
-        await sendQuery("SELECT * from restock order by restock_id;")
-        .then((response) => {
-            console.log("received response");
-            window.restock = response;
-        }).catch((error) => {
-            console.error(error.message);
-        });
-    }
-
-      useEffect(() => {
-        getIngred();
-        getItems();
-        getRestock();
-      }, []);
 
     return (
         <div>

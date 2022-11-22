@@ -7,7 +7,7 @@ async function sendQuery(query) {
     body: JSON.stringify({ query: query })
   };
   
-  console.log(`sending query "${query}" to server`);
+  //console.log(`sending query "${query}" to server`);
   return new Promise((resolve) => {
     fetch('http://localhost:5000/db/query', requestOptions)
       .then(response => response.json())
@@ -29,7 +29,7 @@ async function sendUpdate(query) {
     body: JSON.stringify({ query: query })
   };
   
-  console.log(`sending query "${query}" to server`);
+  //console.log(`sending query "${query}" to server`);
   return new Promise((resolve) => {
     fetch('http://localhost:5000/db/update', requestOptions)
       .then(response => response.json())

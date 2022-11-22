@@ -4,6 +4,8 @@ import {useNavigate} from "react-router-dom";
 const SalesReport = () => {
   let navigate = useNavigate();
 
+  window.itemsSales = window.itemsSales || [];
+
     return (
         
         <div>
@@ -20,7 +22,7 @@ const SalesReport = () => {
               <table id = "salesReport">
                 <tbody>
                     {window.itemsSales.map(item => (
-                    <tr class="sales" id={item.name}>
+                    <tr className="sales" id={item.name}>
                         <td width = "240" id = {item.name}>Item: {item.name}</td> 
                         <td width = "180">Amount sold: {item.amount}</td>   
                         <td width = "240">Total Sales Figure: {Number(item.price).toFixed(2)}</td>     

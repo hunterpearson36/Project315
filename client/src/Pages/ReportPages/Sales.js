@@ -63,13 +63,15 @@ const SalesReport = () => {
           document.getElementById("errorMessage").innerHTML = "Start date is later than the end date, cancelling sales report";
           return;
         }
+        var start_str = changeDate(start);
+        var end_str = changeDate(end);
         var startIndex = 0;
         var endIndex = window.orderSales.length - 1;
         for(var m = 0, n = window.orderSales.length-1; m < window.orderSales.length; m++, n--){
-          if(start > changeDate(window.orderSales[m].order_date)){
+          if(start_str > changeDate(window.orderSales[m].order_date)){
             startIndex++;
           }
-          if(end < changeDate(window.orderSales[n].order_date)){
+          if(end_str < changeDate(window.orderSales[n].order_date)){
             endIndex--;
           }
         }

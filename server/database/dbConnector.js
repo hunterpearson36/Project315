@@ -13,7 +13,7 @@ const pool = new Pool({
 
 //
 async function executeQuery(query) {
-    console.log(`executing query: \"${query}\"`);
+    //console.log(`executing query: \"${query}\"`);
     var queryRows = [];
 
     return new Promise((resolve) => {
@@ -21,19 +21,19 @@ async function executeQuery(query) {
             for (let i = 0; i < query_res.rowCount; i++) {
                 queryRows.push(query_res.rows[i]);
             }
-            console.log('successfully completed query');
+            //console.log('successfully completed query');
             resolve(queryRows);
         });
     });
 }
 
 async function executeUpdate(query) {
-    console.log(`executing update: \"${query}\"`);
+    //console.log(`executing update: \"${query}\"`);
 
     return new Promise((resolve) => {
         try {
             pool.query(query).then(() => {
-                console.log('successfully completed update');
+                //console.log('successfully completed update');
                 resolve(true);
             });
         } catch (error) {

@@ -3,6 +3,8 @@ import {useNavigate} from "react-router-dom";
 function RestockReport() {
     let navigate = useNavigate();
 
+    window.data = window.data || [];
+
     return (
         <div>
             <label>Restock Report:</label>

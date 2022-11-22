@@ -75,7 +75,7 @@ const Restock = () => {
             <table id = "restockTable">
               <tbody>
                 {window.restock.map(item => (
-                <tr class="restock" id={item.restock_id}>
+                <tr className="restock" id={item.restock_id}>
                     <td width = "200">{item.restock_name}</td>
                     <td width = "50">{item.restock_qty}</td>
                     <td width = "100"><input type = "number" placeholder="" name="update"/></td>
