@@ -6,7 +6,7 @@ function Home() {
 
     return(
       <div>
-        <button 
+        <button class = "customer"
           onClick={() => {
             navigate("/customer");
           }}
@@ -14,7 +14,7 @@ function Home() {
           Change to Customer GUI
         </button>
 
-        <button 
+        <button class = "other"
           onClick={() => {
             navigate("/server");
           }}
@@ -22,7 +22,7 @@ function Home() {
           Change to Server GUI
         </button>
 
-        <button 
+        <button class = "other"
           onClick={() => {
             navigate("/manager");
           }}

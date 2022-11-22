@@ -19,9 +19,9 @@ function RestockReport() {
             <table id = "restockReport">
               <tbody>
                 {window.data.map(item => (
-                <tr class="restock" id={item.name}>
-                    <td width = "240" id = {item.name}>Ingredient: {item.name}</td> 
-                    <td width = "180">Current Quantity: {item.qty}</td>          
+                <tr class="restockTable" id={item.name}>
+                    <td width = "700" id = {item.name}>Ingredient: {item.name}</td> 
+                    <td width = "300">Current Quantity: {item.qty}</td>          
                     <td>Minimum Quantity: {item.min}</td>
                 </tr>
                 ))}
