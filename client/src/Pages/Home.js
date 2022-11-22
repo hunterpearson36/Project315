@@ -36,7 +36,11 @@ function Home() {
     }
     return (
       <div>
+<<<<<<< HEAD
         <button className = "customer"
+=======
+        <button
+>>>>>>> 8704c278 (Started some extremely simple OAUTH)
           onClick={() => {
             navigate("/customer");
           }}
