@@ -27,6 +27,8 @@ const IngredientsTable = () => {
           document.getElementById("deleteMessage").innerHTML = ingredName +  " has been deleted";
           rows[i].parentNode.removeChild(rows[i]);
           found++;
+          window.ingred.splice(i,1);
+          window.restock.splice(i,1);
           //updateData("DELETE FROM ingredients WHERE ingred_name = '" + ingredName + "' and ingred_id < 2000;")
           //updateData("DELETE FROM restock WHERE restock_name = '" + ingredName + "';")
         }
@@ -52,6 +54,7 @@ const IngredientsTable = () => {
           return;
         }
         rows[i].childNodes[1].innerHTML = quantity;
+        window.ingred[i].ingred_qty = quantity;
         break;
       }
     }
@@ -62,7 +65,14 @@ const IngredientsTable = () => {
 
     return (
         <div>
-            <p>Ingredients:</p>
+            <label>Ingredients:</label><br/>
+            <button
+                onClick={() => {
+                    navigate("restock");
+                }}
+            >
+                Restock Ingredients
+            </button> <br/> 
             <button
                 onClick={() => {
                     navigate("/manager");

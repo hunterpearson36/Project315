@@ -28,6 +28,7 @@ const ItemStructures = () => {
           document.getElementById("deleteMessage").innerHTML = itemName +  " has been deleted";
           rows[i].parentNode.removeChild(rows[i]);
           found++;
+          window.itm.splice(i,1);
           //updateData("DELETE FROM item_structures WHERE structure_name = '" + itemName + "';")
         }
       }
@@ -40,19 +41,19 @@ const ItemStructures = () => {
   function updateIngredient(value){
     var rows = document.getElementsByClassName("items");
     var quantity;
-    console.log(rows);
     for(var i = 0; i < rows.length; i++){
       if(Number(rows[i].id) === Number(value)){
         quantity = rows[i].childNodes[2].childNodes[0].value;
         if(quantity === ""){
-          document.getElementById("updateMessage").innerHTML = "Please enter the new quantity";
+          document.getElementById("updateMessage").innerHTML = "Please enter the new price";
           return;
         }
         if(quantity.substring(0,1) === "-"){
-          document.getElementById("updateMessage").innerHTML = "Quantity cannot be a negatitve number";
+          document.getElementById("updateMessage").innerHTML = "Price cannot be a negatitve number";
           return;
         }
         rows[i].childNodes[1].innerHTML = quantity;
+        window.itm[i].structure_price = quantity;
         break;
       }
     }
@@ -63,7 +64,7 @@ const ItemStructures = () => {
 
     return (
         <div>
-            <p>Item:</p>
+            <label>Item:</label><br/>
             <button
                 onClick={() => {
                     navigate("/manager");

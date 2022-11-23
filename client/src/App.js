@@ -12,6 +12,7 @@ import ErrorPage from "./Pages/ErrorPage";
 import OrderPlaced from "./Pages/OrderPlaced";
 import ItemStructures from "./Pages/ItemStructures";
 import IngredientsTable from "./Pages/IngredientsTable";
+import RestockIngredients from "./Pages/RestockIngredients";
 import Extra from "./Pages/Extra";
 import AddItem from "./Pages/AddItem";
 import AddIngredient from "./Pages/AddIngredient";
@@ -37,6 +38,7 @@ const App = () => {
         <Route path="/order-placed" element={<OrderPlaced />} />
         <Route path="/manager/items-table" element={<ItemStructures />} />
         <Route path="/manager/ingredients-table" element={<IngredientsTable />} />
+        <Route path="/manager/ingredients-table/restock" element={<RestockIngredients />} />
         <Route path="/manager/add-item" element={<AddItem />} />
         <Route path="/manager/add-ingredient" element={<AddIngredient />} />
         <Route path="/manager/reports" element={<Reports />} />
