@@ -155,7 +155,8 @@ function Server() {
         }
         var orderNumber = getRandomInt(0, 1000000);
         var date = getDateTime();
-        var out = orderID + ", '" + name + "', " + orderNumber + ", " + total + ", '{" +items + "}', '" + server + "', '', '"  + date + "'";
+        var details = document.getElementById("orderDetails").value;
+        var out = orderID + ", '" + name + "', " + orderNumber + ", " + total + ", '{" +items + "}', '" + server + "', '" + details + "', '"  + date + "'";
         var update = "INSERT INTO orders VALUES (" + out + ");";
         console.log(update);
         window.orderId = orderNumber;
@@ -327,7 +328,11 @@ function Server() {
                 </button><br/>
                 <br/>
 
-                <label>TOTAL: $</label> <label id = "total">0.00</label><br/><br/>
+                <label>TOTAL: $</label> <label id = "total">0.00</label><br/>
+                <label>Additional Order Details:</label> 
+                <br/>
+                
+                <textarea rows = "5" cols = "60" id = "orderDetails"/><br/><br/>
 
                 <button
                 onClick={() => {
