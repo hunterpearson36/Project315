@@ -56,9 +56,19 @@ function reports() {
                 console.error(error.message);
             });
     }
+    const getIngred = async () => {
+        await sendQuery("SELECT * from ingredients order by ingred_id;")
+            .then((response) => {
+                //console.log("received response");
+                window.ingredSales = response;
+            }).catch((error) => {
+                console.error(error.message);
+            });
+    }
 
     getOrders();
     getItems();
+    getIngred();
 }
 
 function loadManager() {
