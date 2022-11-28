@@ -30,7 +30,7 @@ function Server() {
         newElem.setAttribute("name", name);
         newElem.setAttribute("type", "text");
         newElem.setAttribute("value", name);
-        newElem.setAttribute("width","1000");
+        newElem.setAttribute("width","500");
         newElem.setAttribute("height","50");
         newCell.appendChild(newElem);
         newCell.innerHTML = name;
@@ -239,93 +239,53 @@ function Server() {
                 </table><br/>
 
                 <label for = "entrees">Entrees</label><br/>
-                <select name="entrees" id="selectEntrees">
-                    {window.entrees.map(item => (
-                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
-                        </option>
-                    ))}
-                </select>
-                <button
-                    onClick={() => {
-                        var e = document.getElementById("selectEntrees");
-                        var text = e.options[e.selectedIndex].text;
-                        var price = e.options[e.selectedIndex].getAttribute("price");
-                        var details = e.options[e.selectedIndex].getAttribute("details");
-                        if(!(text === "--Choose an option--")){
-                            handleAdd(text, price, details);
-                        }
-                    }}
-                >
-                    Add Entree to order
-                </button><br/>
+                {window.entrees.map(item => (
+                    <button
+                        onClick={() => {
+                            handleAdd(item.structure_name, item.structure_price, item.structure_details);
+                        }}
+                    >
+                        {item.structure_name}
+                    </button>
+                ))}
+                <br/>
 
                 <label for = "sides">Sides</label><br/>
-                <select name="sides" id="selectSides">
-                    {window.sides.map(item => (
-                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
-                        </option>
-                    ))}
-                </select>
-                <button
-                    onClick={() => {
-                        var e = document.getElementById("selectSides");
-                        var text = e.options[e.selectedIndex].text;
-                        var price = e.options[e.selectedIndex].getAttribute("price");
-                        var details = e.options[e.selectedIndex].getAttribute("details");
-                        if(!(text === "--Choose an option--")){
-                            handleAdd(text, price, details);
-                        }
-                    }}
-                >
-                    Add Side to order
-                </button><br/>
+                {window.sides.map(item => (
+                    <button
+                        onClick={() => {
+                            handleAdd(item.structure_name, item.structure_price, item.structure_details);
+                        }}
+                    >
+                        {item.structure_name}
+                    </button>
+                ))}
+                <br/>
 
                 <label for = "desserts">Desserts</label><br/>
-                <select name="desserts" id="selectDesserts">
-                    {window.desserts.map(item => (
-                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
-                        </option>
-                    ))}
-                </select>
-                <button
-                    onClick={() => {
-                        var e = document.getElementById("selectDesserts");
-                        var text = e.options[e.selectedIndex].text;
-                        var price = e.options[e.selectedIndex].getAttribute("price");
-                        var details = e.options[e.selectedIndex].getAttribute("details");
-                        if(!(text === "--Choose an option--")){
-                            handleAdd(text, price, details);
-                        }
-                    }}
-                >
-                    Add Dessert to order
-                </button><br/>
+                {window.desserts.map(item => (
+                    <button
+                        onClick={() => {
+                            handleAdd(item.structure_name, item.structure_price, item.structure_details);
+                        }}
+                    >
+                        {item.structure_name}
+                    </button>
+                ))}
+                <br/>
 
-                <label for = "drinks">Drinks</label><br/>
-                <select name="drinks" id="selectDrinks">
-                    {window.drinks.map(item => (
-                        <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
-                        </option>
-                    ))}
-                </select>
-                <button
-                    onClick={() => {
-                        var e = document.getElementById("selectDrinks");
-                        var text = e.options[e.selectedIndex].text;
-                        var price = e.options[e.selectedIndex].getAttribute("price");
-                        var details = e.options[e.selectedIndex].getAttribute("details");
-                        if(!(text === "--Choose an option--")){
-                            handleAdd(text, price, details);
-                        }
-                        // add to total
-                    }}
-                >
-                    Add Drink to order
-                </button><br/>
+                <label for = "entrees">Drinks</label><br/>
+                {window.drinks.map(item => (
+                    <button
+                        onClick={() => {
+                            handleAdd(item.structure_name, item.structure_price, item.structure_details);
+                        }}
+                    >
+                        {item.structure_name}
+                    </button>
+                ))}
+                <br/>
+
                 <br/>
 
                 <label>TOTAL: $</label> <label id = "total">0.00</label><br/>
