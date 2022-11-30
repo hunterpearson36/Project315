@@ -52,7 +52,7 @@ function Customer() {
         elem.innerHTML = parseFloat(Number(amount) - Number(price)).toFixed(2);
         for(var i = data.length-1; i >= 0; i--){
             if(data[i].name === e.parentNode.parentNode.getAttribute("name")){
-                var splice = data.splice(i,1);
+                data.splice(i,1);
                 return;
             }
         }

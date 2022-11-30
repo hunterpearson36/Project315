@@ -83,6 +83,16 @@ function home() {
             });
     }
 
+    const getEmployee = async () => {
+        await sendQuery("SELECT * from employees;")
+            .then((response) => {
+                //console.log("received response");
+                window.employee = response;
+            }).catch((error) => {
+                console.error(error.message);
+            });
+    } 
+
     gapi.load('auth2', AUTH_start);
     getEntrees();
     getSides();
@@ -91,6 +101,7 @@ function home() {
     getOrder();
     getItems();
     getIngred();
+    getEmployee();
 }
 
 function loadGeneral() {

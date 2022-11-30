@@ -2,8 +2,6 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../modules/Query";
 
-window.EmployeeName = "Hunter";
-
 function Server() {
     let navigate = useNavigate();
 

@@ -15,6 +15,7 @@ function Login() {
         setCookie("USER_EMAIL", profile.email, 14);
         setCookie("USER_NAME", profile.name, 14);
         setCookie("USER_GIVEN_NAME", profile.givenName, 14);
+        setCookie("USER_FAMILY_NAME", profile.familyName, 14);
         if (!logged_in) {
             window.location.reload(false);
         }
