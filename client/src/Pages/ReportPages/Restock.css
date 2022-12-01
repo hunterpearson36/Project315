@@ -19,6 +19,10 @@ border: 3px solid purple;
   font-size: x-large;
 }
 
+input[type=text]:focus {
+  border: 3px solid #555;
+}
+
 .button{
 background-color: #000000;
 border: black;
