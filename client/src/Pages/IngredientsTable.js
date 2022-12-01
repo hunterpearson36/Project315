@@ -29,8 +29,8 @@ const IngredientsTable = () => {
           found++;
           window.ingred.splice(i,1);
           window.restock.splice(i,1);
-          //updateData("DELETE FROM ingredients WHERE ingred_name = '" + ingredName + "' and ingred_id < 2000;")
-          //updateData("DELETE FROM restock WHERE restock_name = '" + ingredName + "';")
+          updateData("DELETE FROM ingredients WHERE ingred_name = '" + ingredName + "' and ingred_id < 2000;")
+          updateData("DELETE FROM restock WHERE restock_name = '" + ingredName + "';")
         }
       }
     }
@@ -88,7 +88,7 @@ const IngredientsTable = () => {
               }}
             >
               Delete Ingredient
-            </button> <br/><label id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</label>
+            </button>
             <br/><label id="updateMessage"> </label>
             <table id = "ingredTable">
               <tbody>

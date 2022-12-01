@@ -52,7 +52,7 @@ function Server() {
         elem.innerHTML = parseFloat(Number(amount) - Number(price)).toFixed(2);
         for(var i = data.length-1; i >= 0; i--){
             if(data[i].name === e.parentNode.parentNode.getAttribute("name")){
-                var splice = data.splice(i,1);
+                data.splice(i,1);
                 return;
             }
         }
@@ -143,7 +143,7 @@ function Server() {
             return;
         }
         var items = createItems();
-        var server = window.EmployeeName;
+        var server = window.employeeName;
         var orderID;
         while(true){
             orderID = getRandomInt(0, 2147483647);
@@ -156,7 +156,7 @@ function Server() {
         var details = document.getElementById("orderDetails").value;
         var out = orderID + ", '" + name + "', " + orderNumber + ", " + total + ", '{" +items + "}', '" + server + "', '" + details + "', '"  + date + "'";
         var update = "INSERT INTO orders VALUES (" + out + ");";
-        console.log(update);
+        updateData(update);
         window.orderId = orderNumber;
         navigate("/order-placed");
     }
@@ -301,7 +301,7 @@ function Server() {
                 </button>
                 <button
                 onClick={() => {
-                    navigate("/");
+                    navigate("/home");
                   }}
                 >
                     Cancel Order

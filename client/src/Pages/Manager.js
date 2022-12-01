@@ -10,7 +10,7 @@ function Manager() {
             <br/>
             <button 
                 onClick={() => {
-                navigate("/manager/items-table");
+                    navigate("/manager/items-table");
                 }}
             >         
             Go to Items Table
@@ -18,7 +18,7 @@ function Manager() {
 
             <button 
                 onClick={() => {
-                navigate("/manager/ingredients-table");
+                    navigate("/manager/ingredients-table");
                 }}
             >         
             Go to Ingredients Table
@@ -26,14 +26,14 @@ function Manager() {
             <br/>
             <button 
                 onClick={() => {
-                navigate("/manager/add-item");
+                    navigate("/manager/add-item");
                 }}
             >         
             Add New Item
             </button>
             <button 
                 onClick={() => {
-                navigate("/manager/add-ingredient");
+                    navigate("/manager/add-ingredient");
                 }}
             >         
             Add New Ingredient
@@ -41,7 +41,7 @@ function Manager() {
             <br/>
             <button 
                 onClick={() => {
-                navigate("/manager/reports");
+                    navigate("/manager/reports");
                 }}
             >         
             Go To Reports Section
@@ -49,7 +49,7 @@ function Manager() {
             <br/>
             <button 
                 onClick={() => {
-                navigate("/");
+                    navigate("/home");
                 }}
             >         
             Back to Home Page

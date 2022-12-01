@@ -29,7 +29,7 @@ const ItemStructures = () => {
           rows[i].parentNode.removeChild(rows[i]);
           found++;
           window.itm.splice(i,1);
-          //updateData("DELETE FROM item_structures WHERE structure_name = '" + itemName + "';")
+          updateData("DELETE FROM item_structures WHERE structure_name = '" + itemName + "';")
         }
       }
     }
@@ -80,8 +80,7 @@ const ItemStructures = () => {
               }}
             >
               Delete Item
-            </button> <br/> 
-            <label id="deleteMessage">NOTE: The code to actually delete it from the database is currently commented out but it has been verified to actually works</label>
+            </button>
             <br/>
             <label id="updateMessage"></label>
             <br/>

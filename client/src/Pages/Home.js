@@ -119,6 +119,13 @@ function isManager(){
   return (
     <div>
       {permRoutes()}
+      <button className = "customer"
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          Back to Login
+        </button>
     </div>
   );
 }
