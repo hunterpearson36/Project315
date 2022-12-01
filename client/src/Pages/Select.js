@@ -1,9 +1,10 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getButton } from "../modules/Google/Status";
-import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
+import { useLoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 
 function Home() {
+  const [selected, setSelected] = React.useState(null);
   let navigate = useNavigate();
 
   const {isLoaded, loadError} = useLoadScript({
@@ -19,8 +20,8 @@ function Home() {
   }
   
   const center = {
-    lat:30.6123515,
-    lng:-96.3411607,
+    lat:30.6123082604976,
+    lng:-96.34130764536478,
   }
 
   const options = {
@@ -31,10 +32,25 @@ function Home() {
   function map(){
     return <div>
       <GoogleMap mapContainerStyle={mapContainerStyle} zoom={17} center = {center} options = {options}>
-        <Marker position={center} />
+        <Marker 
+          position={center}
+          onClick={() => {
+              setSelected(true);
+          }}
+        />
+        {selected ? (
+          <InfoWindow position={center} 
+            onCloseClick={() => {
+                setSelected(null);
+            }}
+          >
+            <div>
+              <h2>Chick-fil-A</h2>
+              <p>275 Joe Routt Blvd, College Station, TX 77843</p>
+            </div>
+        </InfoWindow>) : null}
       </GoogleMap>
     </div>;
-    
   }
 
   return (
