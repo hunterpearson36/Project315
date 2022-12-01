@@ -29,17 +29,6 @@ function Home() {
   }
 
   function map(){
-    // return(
-    //     <GoogleMap  center={{lat:30.6119591, lng:-96.3418951}} zoom={17} mapContainerStyle = {{width: '100%', height: '100%'}} 
-    //     options={{
-    //       zoomControl: false,
-    //       streetViewControl: false,
-    //       mapTypeControl: false,
-    //       fullscreenControl: false,
-    //     }}>
-    //       {/* <Marker position={{lat:30.6119591, lng:-96.3418951}} /> */}
-    //     </GoogleMap>
-    // );
     return <div>
       <GoogleMap mapContainerStyle={mapContainerStyle} zoom={17} center = {center} options = {options}>
         <Marker position={center} />
