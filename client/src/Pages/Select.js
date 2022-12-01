@@ -1,9 +1,53 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { getButton } from "../modules/Google/Status";
+import { useLoadScript, GoogleMap, Marker } from '@react-google-maps/api';
 
 function Home() {
   let navigate = useNavigate();
+
+  const {isLoaded, loadError} = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+  })
+
+  if(loadError) return "Error loading"
+  if(!isLoaded) return "Loading Map"
+
+  const mapContainerStyle = {
+    width: '100vw',
+    height: '80vh'
+  }
+  
+  const center = {
+    lat:30.6123515,
+    lng:-96.3411607,
+  }
+
+  const options = {
+    disableDefaultUI: true,
+    zoomControl: true, 
+  }
+
+  function map(){
+    // return(
+    //     <GoogleMap  center={{lat:30.6119591, lng:-96.3418951}} zoom={17} mapContainerStyle = {{width: '100%', height: '100%'}} 
+    //     options={{
+    //       zoomControl: false,
+    //       streetViewControl: false,
+    //       mapTypeControl: false,
+    //       fullscreenControl: false,
+    //     }}>
+    //       {/* <Marker position={{lat:30.6119591, lng:-96.3418951}} /> */}
+    //     </GoogleMap>
+    // );
+    return <div>
+      <GoogleMap mapContainerStyle={mapContainerStyle} zoom={17} center = {center} options = {options}>
+        <Marker position={center} />
+      </GoogleMap>
+    </div>;
+    
+  }
+
   return (
     <div>
       <label>Temporary Select Language Screen / Login Screen</label>
@@ -17,6 +61,7 @@ function Home() {
       >
         Go to Home Page
       </button>
+      {map()}
     </div>
   );
 }
