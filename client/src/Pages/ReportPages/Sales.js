@@ -104,8 +104,6 @@ const SalesReport = () => {
     return (
         
         <div>
-            <label>Sales Report:</label>
-            <br/>
             <label>Start Time:</label>
             <input type = "datetime-local" id = "start"/>
             <br/>

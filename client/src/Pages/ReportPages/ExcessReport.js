@@ -9,8 +9,6 @@ const SalesReport = () => {
     return (
         
         <div>
-            <label>Excess Report:</label>
-            <br/>
             <button
                 onClick={() => {
                     navigate("/manager/reports");

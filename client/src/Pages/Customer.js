@@ -220,18 +220,15 @@ function Customer() {
                 <label>Enter Your Name:</label><br/>
                 <input type="text" placeholder="Name" id="Name" /><br/><br/>
 
-                <table id = "order">
-                    <tr>
-                        <th>Order</th>
-                        </tr>
-                        {data.map((val, key) => {
-                            return (
-                                <tr key={key}>
-                                <td>{val.name}</td>
-                                </tr>
-                            )
-                        })}
-                    
+                <table class = "order" id = "order">
+                    <th colspan = "2">Order</th>
+                    {data.map((val, key) => {
+                        return (
+                            <tr key={key}>
+                            <td>{val.name}</td>
+                            </tr>
+                        )
+                    })}   
                 </table><br/>
 
                 <label for = "entrees">Entrees</label><br/>

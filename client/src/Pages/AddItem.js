@@ -214,14 +214,6 @@ const AddItem = () => {
     return (
         <div>
             <label>Add New Item:</label><br/>
-            <p id = "message"></p>
-            <button
-                onClick={() => {
-                    createItem();
-                }}
-            >
-                Create New Item
-            </button><br/>
             <input type = "text" id = "itemName" placeholder = "Item name"/>
             <input type = "number" id = "itemPrice" placeholder = "Item Price"/>
             <label>  Item type:</label>
@@ -250,8 +242,17 @@ const AddItem = () => {
                     Add Ingredient to Item
                 </button>
             <br/>
-            <table id = "ingredientsTable">
-                <thead>Item</thead>
+            <button
+                onClick={() => {
+                    createItem();
+                }}
+            >
+                Create New Item
+            </button><br/>
+            <label id = "message"/>
+            <br/>
+            <table class = "order" id = "ingredientsTable">
+                <thead colspan = "2">Ingredients</thead>
                 <tbody id = "ingredientsTableBody"></tbody>      
             </table>
             <br/>

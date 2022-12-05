@@ -4,6 +4,7 @@ import { startup } from "./modules/Startup/Startup";
 
 import {Routes, Route} from "react-router-dom";
 
+import "./App.css";
 import Select from "./Pages/Select";
 import Home from "./Pages/Home";
 import Customer from "./Pages/Customer";

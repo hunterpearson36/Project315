@@ -7,8 +7,6 @@ function RestockReport() {
 
     return (
         <div>
-            <label>Restock Report:</label>
-            <br/>
             <button
                 onClick={() => {
                     navigate("/manager/reports");

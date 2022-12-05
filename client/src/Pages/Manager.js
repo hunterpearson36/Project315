@@ -6,7 +6,7 @@ function Manager() {
 
     return (
         <div>
-            Manager GUI
+            Manager Menu
             <br/>
             <button 
                 onClick={() => {

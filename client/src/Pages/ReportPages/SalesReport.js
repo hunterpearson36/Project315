@@ -9,8 +9,6 @@ const SalesReport = () => {
     return (
         
         <div>
-            <label>Sales Report:</label>
-            <br/>
             <button
                 onClick={() => {
                     navigate("/manager/reports");
@@ -25,7 +23,7 @@ const SalesReport = () => {
                     <tr className="sales" id={item.name}>
                         <td width = "240" id = {item.name}>Item: {item.name}</td> 
                         <td width = "180">Amount sold: {item.amount}</td>   
-                        <td width = "240">Total Sales Figure: {Number(item.price).toFixed(2)}</td>     
+                        <td width = "240">Total Sales Figure: ${Number(item.price).toFixed(2)}</td>     
                     </tr>
                     ))}
                 </tbody>

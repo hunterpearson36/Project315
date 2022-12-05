@@ -1,6 +1,5 @@
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../../modules/Query";
-import "./Restock.css";
 
 const Restock = () => {
   let navigate = useNavigate();
@@ -55,8 +54,6 @@ const Restock = () => {
 
     return (
         <div>
-            <label>Restock:</label>
-            <br/>
             <button
                 onClick={() => {
                     navigate("/manager/reports");
@@ -86,7 +83,7 @@ const Restock = () => {
                           updateRestock(item.restock_id);
                         }}
                       >
-                        Update Quantity
+                        Update Minimum Quantity
                       </button>
                     </td>
                     

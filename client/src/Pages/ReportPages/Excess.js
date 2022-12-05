@@ -124,10 +124,6 @@ const Excess = () => {
 
     return (
         <div>
-            <label>Excess Report:</label>
-            <br/>
-            <label id="errorMessage"> </label>
-            <br/>
             <label>Start Time:</label>
             <input type = "datetime-local" id = "start"/>
             <br/>
@@ -149,6 +145,8 @@ const Excess = () => {
             >
                 Back To Reports
             </button>
+            <br/>
+            <label id="errorMessage"> </label>
             
         </div>
     );

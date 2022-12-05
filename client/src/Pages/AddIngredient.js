@@ -122,14 +122,7 @@ const AddIngredient = () => {
     return (
         <div>
             <label>Add New Ingredient:</label><br/>
-            <p id = "message"></p>
-            <button
-                onClick={() => {
-                    createIngredient();
-                }}
-            >
-                Create New Ingredient
-            </button><br/>
+            
             <input type = "text" id = "ingredName" placeholder = "Ingredient name"/>
             <input type = "number" id = "ingredQty" placeholder = "Ingredient Quantity"/>
             <br/>
@@ -144,7 +137,14 @@ const AddIngredient = () => {
             <br/>
             <label>Minimum Stock:</label><input type = "number" id = "restock"/>
             <br/>
-            <br/>
+            <button
+                onClick={() => {
+                    createIngredient();
+                }}
+            >
+                Create New Ingredient
+            </button><br/>
+            <label id = "message"></label><br/>
             <button
                 onClick={() => {
                     navigate("/manager");

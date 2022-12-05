@@ -65,7 +65,6 @@ const IngredientsTable = () => {
 
     return (
         <div>
-            <label>Ingredients:</label><br/>
             <button
                 onClick={() => {
                     navigate("restock");

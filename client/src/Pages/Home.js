@@ -35,21 +35,21 @@ function isManager(){
           return (
             <div>
               <p>
-                Welcome {getCookie("USER_NAME") /*user cookies are safe if this returns true*/}!
+                Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
               </p>
               <button className = "customer"
                 onClick={() => {
                   navigate("/customer");
                 }}
               >
-                Change to Customer GUI
+                Order As Customer
               </button>
               <button
                 onClick={() => {
                   navigate("/server");
                 }}
               >
-                Change to Server GUI
+                Take Customer Order
               </button>
     
               <button
@@ -57,7 +57,7 @@ function isManager(){
                   navigate("/manager");
                 }}
               >
-                Change to Manager GUI
+                Manager Menu
               </button>
             </div>
           );
@@ -66,21 +66,21 @@ function isManager(){
           return (
             <div>
               <p>
-                Welcome {getCookie("USER_NAME") /*user cookies are safe if this returns true*/}!
+                Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
               </p>
               <button className = "customer"
                 onClick={() => {
                   navigate("/customer");
                 }}
               >
-                Change to Customer GUI
+                Order As Customer
               </button>
               <button
                 onClick={() => {
                   navigate("/server");
                 }}
               >
-                Change to Server GUI
+                Take Customer Order
               </button>
             </div>
           );
@@ -89,12 +89,15 @@ function isManager(){
       else{
         return(
           <div>
+            <p>
+                Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
+            </p>
             <button className = "customer"
               onClick={() => {
                 navigate("/customer");
               }}
             >
-              Change to Customer GUI
+              Start Your Order
             </button>
       </div>
         );
@@ -108,7 +111,7 @@ function isManager(){
             navigate("/customer");
           }}
         >
-          Change to Customer GUI
+          Start Your Order
         </button>
       </div>
 

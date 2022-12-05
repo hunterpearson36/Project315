@@ -64,7 +64,6 @@ const ItemStructures = () => {
 
     return (
         <div>
-            <label>Item:</label><br/>
             <button
                 onClick={() => {
                     navigate("/manager");
@@ -90,7 +89,7 @@ const ItemStructures = () => {
                 <tr class="items" id={item.structure_id}>
                     <td width = "200" id ={item.structure_name}>{item.structure_name}</td>
                     <td width = "50">{item.structure_price}</td>
-                    <td width = "100"><input type = "text" placeholder="" name="update"/></td>
+                    <td width = "100"><input type = "number" placeholder="" name="update"/></td>
                     <td width = "130">
                       <button
                         onClick={() => {

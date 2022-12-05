@@ -16,7 +16,7 @@ function Home() {
 
   const mapContainerStyle = {
     width: '100vw',
-    height: '80vh'
+    height: '75vh'
   }
   
   const center = {
@@ -55,17 +55,18 @@ function Home() {
 
   return (
     <div>
-      <label>Temporary Select Language Screen / Login Screen</label>
-      <br/>
-      {getButton()}
-      <br/>
-      <button
+      <center><img src = "https://logo.clearbit.com/cfabristol.com" alt = "Chick-fil-A"/></center>
+      <h3><center>Welcome to Chick-fil-A Online!</center></h3>
+      <center><button
         onClick={() => {
             navigate("/home");
         }}
       >
-        Go to Home Page
+        Proceed to Home Page
       </button>
+      <br/>
+      {getButton()}
+      </center>
       {map()}
     </div>
   );
