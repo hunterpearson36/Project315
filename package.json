@@ -17,19 +17,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@react-google-maps/api": "^2.17.0",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
-    "gapi-script": "^1.2.0",
-    "google-map-react": "^2.2.0",
     "http": "^0.0.1-security",
-    "pg": "^8.8.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-google-login": "^5.2.2",
-    "react-router-dom": "^6.4.3",
-    "react-scripts": "^5.0.1"
+    "pg": "^8.8.0"
   },
   "devDependencies": {
     "@iconify/icons-mdi": "^1.2.34",
