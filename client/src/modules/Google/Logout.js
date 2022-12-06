@@ -19,9 +19,8 @@ function Logout() {
         <div id="signOutButton">
             <Translate text="Logout"/>:
             <GoogleLogout
-                aria-label = "Logout of Google"
                 clientID={process.env.REACT_APP_OAUTH_CLIENT_ID}
-                buttonText={""}
+                buttonText={"Logout of Google"}
                 onLogoutSuccess={onSuccess}
             />
         </div>

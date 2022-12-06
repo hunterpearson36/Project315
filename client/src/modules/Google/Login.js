@@ -30,9 +30,8 @@ function Login() {
         <div id="signInButton">
             <Translate text="Login"/>:
             <GoogleLogin
-                aria-label = "Login with Google"
                 clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
-                buttonText=""
+                buttonText="Login with Google"
                 accessType="offline"
                 prompt="consent"
                 onSuccess={onSuccess}
