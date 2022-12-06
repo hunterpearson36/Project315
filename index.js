@@ -25,8 +25,14 @@ const HTTP_PORT = 5001;
 
 // app routing
 
-app.listen(PORT, () => {
-    console.log("[App]::Listen:%s", PORT);
+app.listen(PORT);
+
+app.on("listening", () => {
+    console.log("[app]::Listen:%s", HTTP_PORT);
+});
+
+app.on("error", error => {
+    throw new Error(`[app]::ERROR:${error.message}`);
 });
 
 app.all('/', (req, res) => {
