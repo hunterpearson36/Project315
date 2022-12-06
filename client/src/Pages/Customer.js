@@ -157,6 +157,7 @@ function Customer() {
         var date = getDateTime();
         var out = orderID + ", '" + name + "', " + orderNumber + ", " + total + ", '{" +items + "}', '" + server + "', '', '"  + date + "'";
         var update = "INSERT INTO orders VALUES (" + out + ");";
+        console.log(update);
         updateData(update);
         window.orderId = orderNumber;
         navigate("/order-placed");
@@ -237,14 +238,14 @@ function Customer() {
                 <select name="entrees" id="selectEntrees">
                     {window.entrees.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
+                            {item.structure_name} (${item.structure_price})
                         </option>
                     ))}
                 </select>
                 <button
                     onClick={() => {
                         var e = document.getElementById("selectEntrees");
-                        var text = e.options[e.selectedIndex].text;
+                        var text = window.entrees[e.selectedIndex].structure_name;
                         var price = e.options[e.selectedIndex].getAttribute("price");
                         var details = e.options[e.selectedIndex].getAttribute("details");
                         if(!(text === "--Choose an option--")){
@@ -259,14 +260,14 @@ function Customer() {
                 <select name="sides" id="selectSides">
                     {window.sides.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
+                            {item.structure_name} (${item.structure_price})
                         </option>
                     ))}
                 </select>
                 <button
                     onClick={() => {
                         var e = document.getElementById("selectSides");
-                        var text = e.options[e.selectedIndex].text;
+                        var text = window.sides[e.selectedIndex].structure_name;
                         var price = e.options[e.selectedIndex].getAttribute("price");
                         var details = e.options[e.selectedIndex].getAttribute("details");
                         if(!(text === "--Choose an option--")){
@@ -281,14 +282,14 @@ function Customer() {
                 <select name="desserts" id="selectDesserts">
                     {window.desserts.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
+                            {item.structure_name} (${item.structure_price})
                         </option>
                     ))}
                 </select>
                 <button
                     onClick={() => {
                         var e = document.getElementById("selectDesserts");
-                        var text = e.options[e.selectedIndex].text;
+                        var text = window.desserts[e.selectedIndex].structure_name;
                         var price = e.options[e.selectedIndex].getAttribute("price");
                         var details = e.options[e.selectedIndex].getAttribute("details");
                         if(!(text === "--Choose an option--")){
@@ -303,14 +304,14 @@ function Customer() {
                 <select name="drinks" id="selectDrinks">
                     {window.drinks.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
-                            {item.structure_name}
+                            {item.structure_name} (${item.structure_price})
                         </option>
                     ))}
                 </select>
                 <button
                     onClick={() => {
                         var e = document.getElementById("selectDrinks");
-                        var text = e.options[e.selectedIndex].text;
+                        var text = window.drinks[e.selectedIndex].structure_name;
                         var price = e.options[e.selectedIndex].getAttribute("price");
                         var details = e.options[e.selectedIndex].getAttribute("details");
                         if(!(text === "--Choose an option--")){

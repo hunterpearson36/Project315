@@ -126,13 +126,13 @@ const Excess = () => {
 
     return (
         <div>
-            <label><Translate text="Start Time:"/></label>
+            <label class = "gui"><Translate text="Start Time:"/></label>
             <input type = "datetime-local" id = "start"/>
             <br/>
-            <label><Translate text="Percentage:"/></label>
+            <label class = "gui"><Translate text="Percentage:"/></label>
             <input type = "number" id = "percent"/>
             <br/>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     getExcess();
                 }}
@@ -140,7 +140,7 @@ const Excess = () => {
                 <Translate text="Get Excess Report"/>
             </button>
             <br/>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     navigate("/manager/reports");
                 }}

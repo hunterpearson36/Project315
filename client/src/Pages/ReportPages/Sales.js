@@ -106,13 +106,13 @@ const SalesReport = () => {
     return (
         
         <div>
-            <label><Translate text="Start Time:"/></label>
+            <label class = "gui"><Translate text="Start Time:"/></label>
             <input type = "datetime-local" id = "start"/>
             <br/>
-            <label><Translate text="End Time:"/></label>
+            <label class = "gui"><Translate text="End Time:"/></label>
             <input type = "datetime-local" id = "end"/>
             <br/>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     salesReport();
                 }}
@@ -120,7 +120,7 @@ const SalesReport = () => {
                 <Translate text="Get Sales Report"/>
             </button>
             <br/>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     navigate("/manager/reports");
                 }}

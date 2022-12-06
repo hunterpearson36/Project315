@@ -85,3 +85,12 @@ textarea:focus{
 .translate{
     display: inline-block;
 }
+
+.gui{
+    font-size: x-large;
+}
+
+.welcome{
+    font-size: xx-large;
+    font-weight: bolder;
+}

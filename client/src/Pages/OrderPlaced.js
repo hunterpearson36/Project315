@@ -7,7 +7,7 @@ function OrderPlaced() {
     let navigate = useNavigate();
     return( 
         <div>
-            <Translate text={`You order ${window.orderId} has been placed. Thank you!`}/>
+            <Translate text={`Your order (# ${window.orderId}) has been placed. Thank you!`}/>
             <br/>
             <button 
                 onClick={() => {

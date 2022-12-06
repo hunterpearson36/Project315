@@ -56,14 +56,14 @@ const Restock = () => {
 
     return (
         <div>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     navigate("/manager/reports");
                 }}
             >
                 <Translate text="Back To Reports"/>
             </button><br/>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     getRestockReport();
                 }}

@@ -11,7 +11,7 @@ const SalesReport = () => {
     return (
         
         <div>
-            <button
+            <button class = "gui"
                 onClick={() => {
                     navigate("/manager/reports");
                 }}
