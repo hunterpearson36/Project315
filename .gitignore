@@ -1,5 +1,6 @@
 # copy of what react ignores, just to ensure safety with server
 
+node_modules
 /node_modules
 /.pnp
 .pnp.js
