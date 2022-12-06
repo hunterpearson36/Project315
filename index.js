@@ -21,6 +21,18 @@ process.on('SIGINT', function() {
 // configs
 const PORT = 5000;
 
+
+// app routing
+
+app.all('/', (req, res) => {
+    console.log("server has received a get request on port 5000");
+    res.status(200).send(null);
+});
+
+const QueryRouter = require('./server/routes/Query');
+app.use('/db', QueryRouter);
+
+
 // create http server and set it up
 const SERVER = http.createServer(app);
 
@@ -33,13 +45,3 @@ SERVER.on("listening", () => {
 SERVER.on("error", error => {
     throw new Error(`[Server]::ERROR:${error.message}`);
 });
-
-// app routing
-
-app.all('/', (req, res) => {
-    console.log("server has received a get request on port 5000");
-    res.status(200).send(null);
-});
-
-const QueryRouter = require('./server/routes/Query');
-app.use('/db', QueryRouter);
