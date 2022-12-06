@@ -31,11 +31,10 @@ app.listen(PORT, () => {
 
 app.all('/', (req, res) => {
     console.log("server has received a get request on port 5000");
-    res.status(200).send(null);
+    res.sendStatus(200);
 });
 
 const QueryRouter = require('./server/routes/Query');
-const { application } = require('express');
 app.use('/db', QueryRouter);
 
 
