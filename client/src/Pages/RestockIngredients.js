@@ -103,7 +103,7 @@ function RestockIngredients() {
             <tbody>
                 {window.ingred.map(item => (
                     <tr class="ingreds" id={item.ingred_id}>
-                        <td width = "200" id = {item.ingred_name}>{item.ingred_name}</td>
+                        <td width = "200" id = {item.ingred_name}><Translate text = {item.ingred_name}/></td>
                         <td width = "50">{item.ingred_qty}</td>
                         <td width = "100"><input type = "number" placeholder="" name="update"/></td>
                         <td width = "100"><input type = "date" id="expireDate"/></td>

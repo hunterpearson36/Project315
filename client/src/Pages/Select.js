@@ -48,8 +48,8 @@ function Home() {
             }}
           >
             <div>
-              <h2>Chick-fil-A</h2>
-              <p>275 Joe Routt Blvd, College Station, TX 77843</p>
+              <h2 class = "infowindow">Chick-fil-A</h2>
+              <p class = "infowindow">275 Joe Routt Blvd, College Station, TX 77843</p>
             </div>
         </InfoWindow>) : null}
       </GoogleMap>

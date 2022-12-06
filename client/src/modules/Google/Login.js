@@ -1,6 +1,7 @@
 import { GoogleLogin } from 'react-google-login';
 
 import { setCookie, getCookie } from '../Cookies/CookieFunctions';
+import Translate from "./Translate";
 
 function Login() {
 
@@ -27,9 +28,10 @@ function Login() {
 
     return(
         <div id="signInButton">
+            <Translate text="Login"/>:
             <GoogleLogin
                 clientId={process.env.REACT_APP_OAUTH_CLIENT_ID}
-                buttonText="Login"
+                buttonText=""
                 accessType="offline"
                 prompt="consent"
                 onSuccess={onSuccess}

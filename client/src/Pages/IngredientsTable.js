@@ -18,26 +18,25 @@ const IngredientsTable = () => {
   function deleteIngredient(){
     var ingredName = document.getElementById("delete").value;
     if(ingredName.length === 0){
-      document.getElementById("deleteMessage").innerHTML = "Please enter the ingredient name to be deleted";
+      document.getElementById("updateMessage").innerHTML = "Please enter the ingredient name to be deleted";
       return;
     }
     var rows = document.getElementsByClassName("ingreds")
     var found = 0;
     for(var i = 0; i < rows.length; i++){
       if(found === 0){
-        if(rows[i].childNodes[0].id === ingredName){
-          document.getElementById("deleteMessage").innerHTML = ingredName +  " has been deleted";
+        if(rows[i].childNodes[0].innerHTML.substring(5, rows[i].childNodes[0].innerHTML.length - 6) === ingredName){
+          var name = rows[i].childNodes[0].id;
+          updateData("DELETE FROM ingredients WHERE ingred_name = '" + name + "' and ingred_id < 2000;")
+          updateData("DELETE FROM restock WHERE restock_name = '" + name + "';")
           rows[i].parentNode.removeChild(rows[i]);
-          found++;
           window.ingred.splice(i,1);
           window.restock.splice(i,1);
-          updateData("DELETE FROM ingredients WHERE ingred_name = '" + ingredName + "' and ingred_id < 2000;")
-          updateData("DELETE FROM restock WHERE restock_name = '" + ingredName + "';")
         }
       }
     }
     if(found === 0){
-      document.getElementById("deleteMessage").innerHTML = "No ingredient with name " + ingredName + " has been found";
+      document.getElementById("updateMessage").innerHTML = "No ingredient with name " + ingredName + " has been found";
     }
   }
 
@@ -95,7 +94,7 @@ const IngredientsTable = () => {
               <tbody>
                 {window.ingred.map(item => (
                 <tr class="ingreds" id={item.ingred_id}>
-                    <td width = "200" id = {item.ingred_name}>{item.ingred_name}</td>
+                    <td width = "200" id = {item.ingred_name}><Translate text = {item.ingred_name}/></td>
                     <td width = "50">{item.ingred_qty}</td>
                     <td width = "100"><input type = "number" placeholder="" name="update"/></td>
                     <td width = "130">

@@ -23,8 +23,8 @@ const SalesReport = () => {
                 <tbody>
                     {window.excess.map(item => (
                     <tr className="sales" id={item.name}>
-                        <td width = "240" id = {item.name}><Translate text="Item:"/>{item.name}</td> 
-                        <td width = "300"><Translate text="Percentage of inventory sold:"/>{item.percent}</td>        
+                        <td width = "240" id = {item.name}><Translate text="Item:"/><br/><Translate text = {item.name}/></td> 
+                        <td width = "300"><Translate text="Percentage of inventory sold:"/><br/>{item.percent}</td>        
                     </tr>
                     ))}
                 </tbody>

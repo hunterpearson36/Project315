@@ -19,24 +19,25 @@ const ItemStructures = () => {
   function deleteItem(){
     var itemName = document.getElementById("delete").value;
     if(itemName.length === 0){
-      document.getElementById("deleteMessage").innerHTML = "Please enter the item name to be deleted";
+      document.getElementById("updateMessage").innerHTML = "Please enter the item name to be deleted";
       return;
     }
     var rows = document.getElementsByClassName("items")
     var found = 0;
     for(var i = 0; i < rows.length; i++){
       if(found === 0){
-        if(rows[i].childNodes[0].id === itemName){
-          document.getElementById("deleteMessage").innerHTML = itemName +  " has been deleted";
+        if(rows[i].childNodes[0].innerHTML.substring(5, rows[i].childNodes[0].innerHTML.length - 6) === itemName){
+          var name = rows[i].childNodes[0].id;
+          document.getElementById("updateMessage").innerHTML = itemName +  " has been deleted";
           rows[i].parentNode.removeChild(rows[i]);
           found++;
           window.itm.splice(i,1);
-          updateData("DELETE FROM item_structures WHERE structure_name = '" + itemName + "';")
+          updateData("DELETE FROM item_structures WHERE structure_name = '" + name + "';")
         }
       }
     }
     if(found === 0){
-      document.getElementById("deleteMessage").innerHTML = "No item with name " + itemName + " has been found";
+      document.getElementById("updateMessage").innerHTML = "No item with name " + itemName + " has been found";
     }
   }
 

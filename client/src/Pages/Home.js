@@ -36,12 +36,8 @@ function isManager(){
         if(isManager()){
           return (
             <div>
-              <Translate
-                text = {
-                  "Welcome " + 
-                  getCookie("USER_GIVEN_NAME")
-                }
-              />
+              <Translate text = "Welcome"/> {getCookie("USER_GIVEN_NAME")}
+              <br/>
               <button className = "customer"
                 onClick={() => {
                   navigate("/customer");

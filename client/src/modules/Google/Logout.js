@@ -1,6 +1,7 @@
 import { GoogleLogout } from 'react-google-login';
 
 import { eraseCookie } from '../Cookies/CookieFunctions';
+import Translate from "./Translate";
 
 function Logout() {
 
@@ -16,9 +17,10 @@ function Logout() {
 
     return (
         <div id="signOutButton">
+            <Translate text="Logout"/>:
             <GoogleLogout
                 clientID={process.env.REACT_APP_OAUTH_CLIENT_ID}
-                buttonText={"Logout"}
+                buttonText={""}
                 onLogoutSuccess={onSuccess}
             />
         </div>

@@ -81,18 +81,15 @@ const AddItem = () => {
         var itemName = document.getElementById("itemName").value;
         if(itemName === ""){
             document.getElementById("message").innerHTML = "No name entered, cancelling item creation";
-            reset();
             return;
         }
         var itemPrice = document.getElementById("itemPrice").value;
         if(itemPrice === ""){
             document.getElementById("message").innerHTML = "No price entered, cancelling item creation";
-            reset();
             return;
         }
         if(itemDetails === "[["){
             document.getElementById("message").innerHTML = "No ingredients entered, cancelling item creation";
-            reset();
             return;
         }
         var out = id + ", '" + itemName + "', " + Number(itemPrice).toFixed(2) + ", '" + itemDetails + "'";
@@ -113,8 +110,8 @@ const AddItem = () => {
 
     function getID(){
         var e = document.getElementById("itemType");
-        var text = e.options[e.selectedIndex].text;
-        if(text === "Entree"){
+        var text = e.selectedIndex;
+        if(text === 0){
             while(true){
                 var id = Math.floor(Math.random() * 100) + 100;
                 var final = items.length - 1;
@@ -128,7 +125,7 @@ const AddItem = () => {
                 }
             }
         }
-        else if(text === "Side"){
+        else if(text === 1){
             while(true){
                 var id = Math.floor(Math.random() * 100) + 200;
                 var final = items.length - 1;
@@ -142,7 +139,7 @@ const AddItem = () => {
                 }
             }
         }
-        else if(text === "Dessert"){
+        else if(text === 2){
             while(true){
                 var id = Math.floor(Math.random() * 100) + 300;
                 var final = items.length - 1;
@@ -218,18 +215,19 @@ const AddItem = () => {
             <label><Translate text="Add New Item:"/></label><br/>
             <input type = "text" id = "itemName" placeholder = "Item name"/>
             <input type = "number" id = "itemPrice" placeholder = "Item Price"/>
+            <br/>
             <label><Translate text="Item type:"/></label>
             <select id = "itemType">
-                <option>Entree</option>
-                <option>Side</option>
-                <option>Dessert</option>
-                <option>Drink</option>
+                <option><Translate text = "Entree"/></option>
+                <option><Translate text = "Side"/></option>
+                <option><Translate text = "Dessert"/></option>
+                <option><Translate text = "Drink"/></option>
             </select>
             <br/>
             <select name="ingredients" id="ingredients">
                 {ingredients.map(item => (
                     <option key={item.ingred_name} name = {item.ingred_name} id = {item.ingred_id}>
-                        {item.ingred_name}
+                        <Translate text = {item.ingred_name}/>
                     </option>
                 ))}
             </select>

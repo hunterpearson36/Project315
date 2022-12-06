@@ -323,7 +323,7 @@ function Customer() {
                 </button><br/>
                 <br/>
 
-                <label><Translate text="TOTAL:"/> $</label> <label id = "total">0.00</label><br/><br/>
+                <label><Translate text="Total:"/> $</label> <label id = "total">0.00</label><br/><br/>
 
                 <button
                 onClick={() => {

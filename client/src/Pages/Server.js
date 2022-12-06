@@ -231,7 +231,7 @@ function Server() {
                             handleAdd(item.structure_name, item.structure_price, item.structure_details);
                         }}
                     >
-                        {item.structure_name}
+                        <Translate text = {item.structure_name}/>
                     </button>
                 ))}
                 <br/>
@@ -243,7 +243,7 @@ function Server() {
                             handleAdd(item.structure_name, item.structure_price, item.structure_details);
                         }}
                     >
-                        {item.structure_name}
+                        <Translate text = {item.structure_name}/>
                     </button>
                 ))}
                 <br/>
@@ -255,7 +255,7 @@ function Server() {
                             handleAdd(item.structure_name, item.structure_price, item.structure_details);
                         }}
                     >
-                        {item.structure_name}
+                        <Translate text = {item.structure_name}/>
                     </button>
                 ))}
                 <br/>
@@ -267,7 +267,7 @@ function Server() {
                             handleAdd(item.structure_name, item.structure_price, item.structure_details);
                         }}
                     >
-                        {item.structure_name}
+                        <Translate text = {item.structure_name}/>
                     </button>
                 ))}
                 <br/>
@@ -286,7 +286,7 @@ function Server() {
 
                 <br/>
 
-                <label><Translate text="TOTAL:"/> $</label> <label id = "total">0.00</label><br/>
+                <label><Translate text="Total:"/> $</label> <label id = "total">0.00</label><br/>
                 <label><Translate text="Additional Order Details:"/></label> 
                 <br/>
                 

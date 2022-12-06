@@ -47,7 +47,7 @@ export default class Translate extends React.Component {
 
     render() {
         return(
-            <div>
+            <div class = "translate">
                 {
                 this.state.trans_text ? 
                     this.state.trans_text :
