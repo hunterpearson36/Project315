@@ -12,6 +12,8 @@ router.post('/query', (req, res) => {
     dbConnector.executeQuery(query).then(rows => {
         //console.log(rows);
         res.json(rows);
+    }).catch((error) => {
+        res.status(500).send(null);
     });
 });
 
@@ -21,6 +23,8 @@ router.post('/update', (req, res) => {
     dbConnector.executeUpdate(query).then(success => {
         if (success) res.status(200).json({ success: "true" });
         else res.status(500).json({ success: "false" });
+    }).catch((error) => {
+        res.status(500).send(null);
     });
 });
 

@@ -23,6 +23,8 @@ async function executeQuery(query) {
             }
             //console.log('successfully completed query');
             resolve(queryRows);
+        }).catch((error) => {
+            resolve(null);
         });
     });
 }
