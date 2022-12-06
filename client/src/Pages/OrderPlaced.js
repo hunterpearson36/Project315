@@ -1,18 +1,21 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
+import Translate from "../modules/Google/Translate";
+
 function OrderPlaced() {
     let navigate = useNavigate();
     return( 
         <div>
-            Your order(#{window.orderId}) has been placed. Thank You! <br/>
+            <Translate text={`You order ${window.orderId} has been placed. Thank you!`}/>
+            <br/>
             <button 
                 onClick={() => {
                     navigate("/");
                 }}
             >         
-          Return Home
-        </button>
+                <Translate text="Return Home"/>
+            </button>
         </div>
     );
 }

@@ -2,6 +2,8 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../modules/Query";
 
+import Translate from "../modules/Google/Translate";
+
 function RestockIngredients() {
     let navigate = useNavigate();
 
@@ -81,20 +83,20 @@ function RestockIngredients() {
 
     return(
       <div>
-        <label>Restock Ingredients:</label><br/>
+        <label><Translate text="Restock Ingredients:"/></label><br/>
         <button
                 onClick={() => {
                     navigate("/manager/ingredients-table");
                 }}
             >
-                Back To Ingredients Table
+                <Translate text="Back To Ingredients Table"/>
         </button> <br/>
         <button
                 onClick={() => {
                     navigate("/manager");
                 }}
             >
-                Back To Manager
+                <Translate text="Back To Manager"/>
         </button> <br/>
         <label id="updateMessage"> </label>
         <table id = "ingredTable">
@@ -111,7 +113,7 @@ function RestockIngredients() {
                                     updateIngredient(item.ingred_id);
                                 }}
                             >
-                                Restock
+                                <Translate text="Restock"/>
                             </button>
                         </td>
                     

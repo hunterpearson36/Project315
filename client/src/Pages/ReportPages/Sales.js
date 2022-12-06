@@ -1,6 +1,8 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
+import Translate from "../../modules/Google/Translate";
+
 const SalesReport = () => {
   let navigate = useNavigate();
 
@@ -104,10 +106,10 @@ const SalesReport = () => {
     return (
         
         <div>
-            <label>Start Time:</label>
+            <label><Translate text="Start Time:"/></label>
             <input type = "datetime-local" id = "start"/>
             <br/>
-            <label>End Time:</label>
+            <label><Translate text="End Time:"/></label>
             <input type = "datetime-local" id = "end"/>
             <br/>
             <button
@@ -115,7 +117,7 @@ const SalesReport = () => {
                     salesReport();
                 }}
             >
-                Get Sales Report
+                <Translate text="Get Sales Report"/>
             </button>
             <br/>
             <button
@@ -123,7 +125,7 @@ const SalesReport = () => {
                     navigate("/manager/reports");
                 }}
             >
-                Back To Reports
+                <Translate text="Back To Reports"/>
             </button>
             <br/>
             <label id = "errorMessage"></label>

@@ -2,6 +2,8 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { sendUpdate } from "../modules/Query";
 
+import Translate from "../modules/Google/Translate";
+
 function Customer() {
     let navigate = useNavigate();
 
@@ -217,11 +219,11 @@ function Customer() {
     return (
         <div> 
             <div>
-                <label>Enter Your Name:</label><br/>
+                <label><Translate text="Enter Your Name:"/></label><br/>
                 <input type="text" placeholder="Name" id="Name" /><br/><br/>
 
                 <table class = "order" id = "order">
-                    <th colspan = "2">Order</th>
+                    <th colspan = "2"><Translate text="Order"/></th>
                     {data.map((val, key) => {
                         return (
                             <tr key={key}>
@@ -231,7 +233,7 @@ function Customer() {
                     })}   
                 </table><br/>
 
-                <label for = "entrees">Entrees</label><br/>
+                <label for = "entrees"><Translate text="Entrees"/></label><br/>
                 <select name="entrees" id="selectEntrees">
                     {window.entrees.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
@@ -250,10 +252,10 @@ function Customer() {
                         }
                     }}
                 >
-                    Add Entree to order
+                    <Translate text="Add Entree to order"/>
                 </button><br/>
 
-                <label for = "sides">Sides</label><br/>
+                <label for = "sides"><Translate text="Sides"/></label><br/>
                 <select name="sides" id="selectSides">
                     {window.sides.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
@@ -272,10 +274,10 @@ function Customer() {
                         }
                     }}
                 >
-                    Add Side to order
+                    <Translate text="Add Side to order"/>
                 </button><br/>
 
-                <label for = "desserts">Desserts</label><br/>
+                <label for = "desserts"><Translate text="Desserts"/></label><br/>
                 <select name="desserts" id="selectDesserts">
                     {window.desserts.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
@@ -294,10 +296,10 @@ function Customer() {
                         }
                     }}
                 >
-                    Add Dessert to order
+                    <Translate text="Add Dessert to order"/>
                 </button><br/>
 
-                <label for = "drinks">Drinks</label><br/>
+                <label for = "drinks"><Translate text="Drinks"/></label><br/>
                 <select name="drinks" id="selectDrinks">
                     {window.drinks.map(item => (
                         <option key={item.structure_id} name = {item.structure_name} price = {item.structure_price} details = {item.structure_details}>
@@ -317,25 +319,25 @@ function Customer() {
                         // add to total
                     }}
                 >
-                    Add Drink to order
+                    <Translate text="Add Drink to order"/>
                 </button><br/>
                 <br/>
 
-                <label>TOTAL: $</label> <label id = "total">0.00</label><br/><br/>
+                <label><Translate text="TOTAL:"/> $</label> <label id = "total">0.00</label><br/><br/>
 
                 <button
                 onClick={() => {
                     createOrder();
                   }}
                 >
-                    Create Order
+                    <Translate text="Create Order"/>
                 </button>
                 <button
                 onClick={() => {
                     navigate("/");
                   }}
                 >
-                    Cancel Order
+                    <Translate text="Cancel Order"/>
                 </button><br/>
 
                 <p id = "errorMessage"></p>

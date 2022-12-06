@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { getCookie } from "../modules/Cookies/CookieFunctions"
 import { isLoggedIn } from "../modules/Google/Status";
 
+import Translate from "../modules/Google/Translate";
+
 function Home() {
   let navigate = useNavigate();
 
@@ -34,22 +36,25 @@ function isManager(){
         if(isManager()){
           return (
             <div>
-              <p>
-                Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
-              </p>
+              <Translate
+                text = {
+                  "Welcome " + 
+                  getCookie("USER_GIVEN_NAME")
+                }
+              />
               <button className = "customer"
                 onClick={() => {
                   navigate("/customer");
                 }}
               >
-                Order As Customer
+                <Translate text="Order As Customer"/>
               </button>
               <button
                 onClick={() => {
                   navigate("/server");
                 }}
               >
-                Take Customer Order
+                <Translate text="Take Customer Order"/>
               </button>
     
               <button
@@ -57,7 +62,7 @@ function isManager(){
                   navigate("/manager");
                 }}
               >
-                Manager Menu
+                <Translate text="Manager Menu"/>
               </button>
             </div>
           );
@@ -65,22 +70,25 @@ function isManager(){
         else{
           return (
             <div>
-              <p>
-                Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
-              </p>
+              <Translate
+                text = {
+                  "Welcome " + 
+                  getCookie("USER_GIVEN_NAME")
+                }
+              />
               <button className = "customer"
                 onClick={() => {
                   navigate("/customer");
                 }}
               >
-                Order As Customer
+                <Translate text="Order As Customer"/>
               </button>
               <button
                 onClick={() => {
                   navigate("/server");
                 }}
               >
-                Take Customer Order
+                <Translate text="Take Customer Order"/>
               </button>
             </div>
           );
@@ -89,15 +97,18 @@ function isManager(){
       else{
         return(
           <div>
-            <p>
-                Welcome {getCookie("USER_GIVEN_NAME") /*user cookies are safe if this returns true*/}!
-            </p>
+            <Translate
+              text = {
+                "Welcome " + 
+                getCookie("USER_GIVEN_NAME")
+              }
+            />
             <button className = "customer"
               onClick={() => {
                 navigate("/customer");
               }}
             >
-              Start Your Order
+              <Translate text="Start Your Order"/>
             </button>
       </div>
         );
@@ -111,7 +122,7 @@ function isManager(){
             navigate("/customer");
           }}
         >
-          Start Your Order
+          <Translate text="Start Your Order"/>
         </button>
       </div>
 
@@ -127,7 +138,7 @@ function isManager(){
             navigate("/");
           }}
         >
-          Back to Login
+          <Translate text="Back to Login"/>
         </button>
     </div>
   );

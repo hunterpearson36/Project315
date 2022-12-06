@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import {useNavigate} from "react-router-dom";
 import { sendQuery, sendUpdate } from "../modules/Query";
 
+import Translate from "../modules/Google/Translate";
+
 const AddIngredient = () => {
 
     let navigate = useNavigate();
@@ -121,28 +123,28 @@ const AddIngredient = () => {
 
     return (
         <div>
-            <label>Add New Ingredient:</label><br/>
+            <label><Translate text="Add New Ingredient:"/></label><br/>
             
             <input type = "text" id = "ingredName" placeholder = "Ingredient name"/>
             <input type = "number" id = "ingredQty" placeholder = "Ingredient Quantity"/>
             <br/>
-            <label>  Storage Location:</label>
+            <label><Translate text="Storage Location:"/></label>
             <select id = "ingredLoc">
                 <option>cupboard</option>
                 <option>refrigerator</option>
                 <option>freezer</option>
             </select>
             <br/>
-            <label>Expiration Date:</label><input type = "date" id = "expire"/>
+            <label><Translate text="Expiration Date:"/></label><input type = "date" id = "expire"/>
             <br/>
-            <label>Minimum Stock:</label><input type = "number" id = "restock"/>
+            <label><Translate text="Minimum Stock:"/></label><input type = "number" id = "restock"/>
             <br/>
             <button
                 onClick={() => {
                     createIngredient();
                 }}
             >
-                Create New Ingredient
+                <Translate text="Create New Ingredient"/>
             </button><br/>
             <label id = "message"></label><br/>
             <button
@@ -150,7 +152,7 @@ const AddIngredient = () => {
                     navigate("/manager");
                 }}
             >
-                Back To Manager
+                <Translate text="Back To Manager"/>
             </button> <br/> 
         </div>
     );

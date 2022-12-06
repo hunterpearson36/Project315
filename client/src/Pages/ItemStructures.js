@@ -1,6 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../modules/Query";
 
+import Translate from "../modules/Google/Translate";
+
 const ItemStructures = () => {
 
   let navigate = useNavigate();
@@ -69,16 +71,16 @@ const ItemStructures = () => {
                     navigate("/manager");
                 }}
             >
-                Back To Manager
+                <Translate text="Back To Manager"/>
             </button> <br/> 
-            <label>Delete Item: </label>
+            <label><Translate text="Delete Item:"/></label>
             <input type="text" placeholder="Item Name" id="delete"/> 
             <button
               onClick={() => {
                 deleteItem();
               }}
             >
-              Delete Item
+              <Translate text="Delete Item"/>
             </button>
             <br/>
             <label id="updateMessage"></label>
@@ -88,7 +90,7 @@ const ItemStructures = () => {
                 {window.itm.map(item => (
                 <tr class="items" id={item.structure_id}>
                     <td width = "200" id ={item.structure_name}>{item.structure_name}</td>
-                    <td width = "50">{item.structure_price}</td>
+                    <td width = "50">${item.structure_price}</td>
                     <td width = "100"><input type = "number" placeholder="" name="update"/></td>
                     <td width = "130">
                       <button
@@ -96,7 +98,7 @@ const ItemStructures = () => {
                           updateIngredient(item.structure_id);
                         }}
                       >
-                        Update Price
+                        <Translate text="Update Price"/>
                       </button>
                     </td>
                     

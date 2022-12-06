@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { getButton } from "../modules/Google/Status";
 import { useLoadScript, GoogleMap, Marker, InfoWindow } from '@react-google-maps/api';
 
+import Translate from "../modules/Google/Translate";
+
 function Home() {
   const [selected, setSelected] = React.useState(null);
   let navigate = useNavigate();
@@ -28,6 +30,7 @@ function Home() {
     disableDefaultUI: true,
     zoomControl: true, 
   }
+
 
   function map(){
     return <div>
@@ -55,14 +58,15 @@ function Home() {
 
   return (
     <div>
+      
       <center><img src = "https://logo.clearbit.com/cfabristol.com" alt = "Chick-fil-A"/></center>
-      <h3><center>Welcome to Chick-fil-A Online!</center></h3>
+      <h3><center><Translate text="Welcome to Chick-fil-A Online!"/></center></h3>
       <center><button
         onClick={() => {
             navigate("/home");
         }}
       >
-        Proceed to Home Page
+        <Translate text="Proceed to Home Page"/>
       </button>
       <br/>
       {getButton()}

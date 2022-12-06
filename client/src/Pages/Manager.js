@@ -1,19 +1,21 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
+import Translate from "../modules/Google/Translate";
+
 function Manager() {
     let navigate = useNavigate();
 
     return (
         <div>
-            Manager Menu
+            <Translate text="Manager Menu"/>
             <br/>
             <button 
                 onClick={() => {
                     navigate("/manager/items-table");
                 }}
             >         
-            Go to Items Table
+            <Translate text="Go to Items Table"/>
             </button>
 
             <button 
@@ -21,7 +23,7 @@ function Manager() {
                     navigate("/manager/ingredients-table");
                 }}
             >         
-            Go to Ingredients Table
+            <Translate text="Go to Ingredients Table"/>
             </button>
             <br/>
             <button 
@@ -29,14 +31,14 @@ function Manager() {
                     navigate("/manager/add-item");
                 }}
             >         
-            Add New Item
+            <Translate text="Add New Item"/>
             </button>
             <button 
                 onClick={() => {
                     navigate("/manager/add-ingredient");
                 }}
             >         
-            Add New Ingredient
+            <Translate text="Add New Ingredient"/>
             </button>
             <br/>
             <button 
@@ -44,7 +46,7 @@ function Manager() {
                     navigate("/manager/reports");
                 }}
             >         
-            Go To Reports Section
+            <Translate text="Go To Reports Section"/>
             </button>
             <br/>
             <button 
@@ -52,7 +54,7 @@ function Manager() {
                     navigate("/home");
                 }}
             >         
-            Back to Home Page
+            <Translate text="Back to Home Page"/>
             </button>
         </div>
 

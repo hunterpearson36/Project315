@@ -1,33 +1,35 @@
 import React from "react";
 import {useNavigate} from "react-router-dom";
 
+import Translate from "../modules/Google/Translate";
+
 const Reports = () => {
   let navigate = useNavigate();
 
     return (
         <div>
-            <label>Reports:</label>
+            <label><Translate text="Reports:"/></label>
             <br/>
             <button
                 onClick={() => {
                     navigate("/manager/reports/sales-report");
                 }}
             >
-                Sales Report
+                <Translate text="Sales Report"/>
             </button>
             <button
                 onClick={() => {
                     navigate("/manager/reports/excess-report");
                 }}
             >
-                Excess Report
+                <Translate text="Excess Report"/>
             </button>
             <button
                 onClick={() => {
                     navigate("/manager/reports/restock-report");
                 }}
             >
-                Restock Report
+                <Translate text="Restock Report"/>
             </button>
             <br/>
             <button
@@ -35,7 +37,7 @@ const Reports = () => {
                     navigate("/manager");
                 }}
             >
-                Back To Manager
+                <Translate text="Back To Manager"/>
             </button>
             
         </div>

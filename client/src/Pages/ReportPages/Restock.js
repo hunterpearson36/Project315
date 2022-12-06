@@ -1,6 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../../modules/Query";
 
+import Translate from "../../modules/Google/Translate";
+
 const Restock = () => {
   let navigate = useNavigate();
 
@@ -59,14 +61,14 @@ const Restock = () => {
                     navigate("/manager/reports");
                 }}
             >
-                Back To Reports
+                <Translate text="Back To Reports"/>
             </button><br/>
             <button
                 onClick={() => {
                     getRestockReport();
                 }}
             >
-                Get Restock Report
+                <Translate text="Get Restock Report"/>
             </button>
             <br/>
             <label id="updateMessage"> </label>
@@ -83,7 +85,7 @@ const Restock = () => {
                           updateRestock(item.restock_id);
                         }}
                       >
-                        Update Minimum Quantity
+                        <Translate text="Update Minimum Quantity"/>
                       </button>
                     </td>
                     

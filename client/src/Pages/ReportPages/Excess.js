@@ -1,5 +1,7 @@
 import {useNavigate} from "react-router-dom";
 
+import Translate from "../../modules/Google/Translate";
+
 const Excess = () => {
     let navigate = useNavigate();
 
@@ -124,10 +126,10 @@ const Excess = () => {
 
     return (
         <div>
-            <label>Start Time:</label>
+            <label><Translate text="Start Time:"/></label>
             <input type = "datetime-local" id = "start"/>
             <br/>
-            <label>Percentage:</label>
+            <label><Translate text="Percentage:"/></label>
             <input type = "number" id = "percent"/>
             <br/>
             <button
@@ -135,7 +137,7 @@ const Excess = () => {
                     getExcess();
                 }}
             >
-                Get Excess Report
+                <Translate text="Get Excess Report"/>
             </button>
             <br/>
             <button
@@ -143,7 +145,7 @@ const Excess = () => {
                     navigate("/manager/reports");
                 }}
             >
-                Back To Reports
+                <Translate text="Back To Reports"/>
             </button>
             <br/>
             <label id="errorMessage"> </label>

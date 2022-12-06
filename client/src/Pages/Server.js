@@ -2,6 +2,8 @@ import React from "react";
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../modules/Query";
 
+import Translate from "../modules/Google/Translate";
+
 function Server() {
     let navigate = useNavigate();
 
@@ -219,10 +221,10 @@ function Server() {
     return (
         <div> 
             <div>
-                <label>Enter Customer Name:</label><br/>
+                <label><Translate text="Enter Customer Name:"/></label><br/>
                 <input type="text" placeholder="Name" id="Name" /><br/><br/>
 
-                <label for = "entrees">Entrees</label><br/>
+                <label for = "entrees"><Translate text="Entrees"/></label><br/>
                 {window.entrees.map(item => (
                     <button
                         onClick={() => {
@@ -234,7 +236,7 @@ function Server() {
                 ))}
                 <br/>
 
-                <label for = "sides">Sides</label><br/>
+                <label for = "sides"><Translate text="Sides"/></label><br/>
                 {window.sides.map(item => (
                     <button
                         onClick={() => {
@@ -246,7 +248,7 @@ function Server() {
                 ))}
                 <br/>
 
-                <label for = "desserts">Desserts</label><br/>
+                <label for = "desserts"><Translate text="Desserts"/></label><br/>
                 {window.desserts.map(item => (
                     <button
                         onClick={() => {
@@ -258,7 +260,7 @@ function Server() {
                 ))}
                 <br/>
 
-                <label for = "entrees">Drinks</label><br/>
+                <label for = "entrees"><Translate text="Drinks"/></label><br/>
                 {window.drinks.map(item => (
                     <button
                         onClick={() => {
@@ -272,7 +274,7 @@ function Server() {
                 <br/>
 
                 <table class = "order" id = "order">
-                    <th colspan = "2">Order</th>
+                    <th colspan = "2"><Translate text="Order"/></th>
                     {data.map((val, key) => {
                         return (
                             <tr key={key}>
@@ -284,8 +286,8 @@ function Server() {
 
                 <br/>
 
-                <label>TOTAL: $</label> <label id = "total">0.00</label><br/>
-                <label>Additional Order Details:</label> 
+                <label><Translate text="TOTAL:"/> $</label> <label id = "total">0.00</label><br/>
+                <label><Translate text="Additional Order Details:"/></label> 
                 <br/>
                 
                 <textarea rows = "5" cols = "60" id = "orderDetails"/><br/><br/>
@@ -295,14 +297,14 @@ function Server() {
                     createOrder();
                   }}
                 >
-                    Create Order
+                    <Translate text="Create Order"/>
                 </button>
                 <button
                 onClick={() => {
                     navigate("/home");
                   }}
                 >
-                    Cancel Order
+                    <Translate text="Cancel Order"/>
                 </button><br/>
 
                 <p id = "errorMessage"></p>

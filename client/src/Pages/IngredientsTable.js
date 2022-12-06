@@ -1,6 +1,8 @@
 import {useNavigate} from "react-router-dom";
 import { sendUpdate } from "../modules/Query";
 
+import Translate from "../modules/Google/Translate";
+
 const IngredientsTable = () => {
   let navigate = useNavigate();
 
@@ -70,23 +72,23 @@ const IngredientsTable = () => {
                     navigate("restock");
                 }}
             >
-                Restock Ingredients
+                <Translate text="Restock Ingredients"/>
             </button> <br/> 
             <button
                 onClick={() => {
                     navigate("/manager");
                 }}
             >
-                Back To Manager
+                <Translate text="Back To Manager"/>
             </button> <br/> 
-            <label>Delete Ingredient: </label>
+            <label><Translate text="Delete Ingredient: "/></label>
             <input type="text" placeholder="Ingredient Name" id="delete"/> 
             <button
               onClick={() => {
                 deleteIngredient();
               }}
             >
-              Delete Ingredient
+              <Translate text="Delete Ingredient"/>
             </button>
             <br/><label id="updateMessage"> </label>
             <table id = "ingredTable">
@@ -102,7 +104,7 @@ const IngredientsTable = () => {
                           updateIngredient(item.ingred_id);
                         }}
                       >
-                        Update Quantity
+                        <Translate text="Update Quantity"/>
                       </button>
                     </td>
                     
