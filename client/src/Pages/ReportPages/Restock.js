@@ -73,19 +73,27 @@ const Restock = () => {
             <br/>
             <label id="updateMessage"> </label>
             <table id = "restockTable">
+              <thead>
+                <tr>
+                  <td><Translate text = "Ingredient"/></td>
+                  <td><Translate text = "Minimum Quantity"/></td>
+                  <td><Translate text = "Update Minimum Quantity Field"/></td>
+                  <td><Translate text = "Update Minimum Quantity Button"/></td>
+                </tr>
+              </thead>
               <tbody>
                 {window.restock.map(item => (
                 <tr className="restock" id={item.restock_id}>
-                    <td width = "330" class = "name"><Translate text = {item.restock_name}/></td>
-                    <td width = "100" class = "qty">{item.restock_qty}</td>
-                    <td width = "300"><input type = "number" placeholder="" name="update" class = "input" width = "200"/></td>
-                    <td width = "130">
+                    <td class = "name"><Translate text = {item.restock_name}/></td>
+                    <td class = "qty">{item.restock_qty}</td>
+                    <td><input type = "number" placeholder="" style={{width: "75%"}} name="update" class = "input"/></td>
+                    <td>
                       <button id = {item.restock_id} class = "button"
                         onClick={() => {
                           updateRestock(item.restock_id);
                         }}
                       >
-                        <Translate text="Update Minimum Quantity"/>
+                        <Translate text="Update"/>
                       </button>
                     </td>
                     
