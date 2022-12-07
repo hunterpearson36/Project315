@@ -182,7 +182,7 @@ function Server() {
             items.push(itemID);
             var out = itemID + ", '" + itemName + "', " + itemPrice + ", '{" + ingredients + "}', '{" + itemDetails + "}'";
             var update = "INSERT INTO items VALUES (" + out +  ");";
-            console.log(update);
+            updateData(update);
             
         }
         return items;
@@ -212,8 +212,8 @@ function Server() {
             var updateStock = "UPDATE ingredients SET ingred_qty = " + stock + " WHERE ingred_ID = " + itemDetails[i] + ";";
             var out = ingredID + ", f, " + ingredQty[i] + ", '" + ingredName + "', '" + ingredStorage + "', '" + ingredExpire + "', '" + ingredOrder + "'";
             var update = "INSERT INTO ingredients VALUES (" + out + ");";
-            console.log(updateStock);
-            console.log(update);
+            updateData(updateStock);
+            updateData(update);
         }
         return ingredients;
     }

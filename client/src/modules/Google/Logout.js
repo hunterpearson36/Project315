@@ -18,7 +18,7 @@ function Logout() {
     return (
         <div id="signOutButton">
             <Translate text="Logout"/>:
-            <GoogleLogout
+            <GoogleLogout 
                 clientID={process.env.REACT_APP_OAUTH_CLIENT_ID}
                 buttonText={"Logout of Google"}
                 onLogoutSuccess={onSuccess}

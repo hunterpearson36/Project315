@@ -54,6 +54,14 @@ function Manager() {
                 <br/>
                 <button class = "gui"
                     onClick={() => {
+                        navigate("/manager/employee");
+                    }}
+                >         
+                <Translate text="Go To Employee Table"/>
+                </button>
+                <br/>
+                <button class = "gui"
+                    onClick={() => {
                         navigate("/home");
                     }}
                 >         

@@ -100,14 +100,23 @@ function RestockIngredients() {
         </button> <br/>
         <label id="updateMessage"> </label>
         <table id = "ingredTable">
+            <thead>
+              <tr>
+                <td><Translate text = "Ingredient"/></td>
+                <td><Translate text = "Ingredient Quantity"/></td>
+                <td><Translate text = "Restock Amount"/></td>
+                <td><Translate text = "Restock Date"/></td>
+                <td><Translate text = "Restock Button"/></td>
+              </tr>
+            </thead>
             <tbody>
                 {window.ingred.map(item => (
                     <tr class="ingreds" id={item.ingred_id}>
-                        <td width = "200" id = {item.ingred_name}><Translate text = {item.ingred_name}/></td>
-                        <td width = "50">{item.ingred_qty}</td>
-                        <td width = "100"><input type = "number" placeholder="" name="update"/></td>
-                        <td width = "100"><input type = "date" id="expireDate"/></td>
-                        <td width = "130">
+                        <td id = {item.ingred_name}><Translate text = {item.ingred_name}/></td>
+                        <td>{item.ingred_qty}</td>
+                        <td><input type = "number" style={{width: "75%"}} placeholder="" name="update"/></td>
+                        <td><input type = "date" style={{width: "75%"}} id="expireDate"/></td>
+                        <td>
                             <button id = {item.ingred_id}
                                 onClick={() => {
                                     updateIngredient(item.ingred_id);

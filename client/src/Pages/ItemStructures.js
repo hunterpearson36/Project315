@@ -87,13 +87,21 @@ const ItemStructures = () => {
             <label id="updateMessage"></label>
             <br/>
             <table>
+              <thead>
+                <tr>
+                  <td><Translate text="Item"/></td>
+                  <td><Translate text="Price"/></td>
+                  <td><Translate text="Update Price Field"/></td>
+                  <td><Translate text="Update Price Button"/></td>
+                </tr>
+              </thead>
               <tbody>
                 {window.itm.map(item => (
                 <tr class="items" id={item.structure_id}>
-                    <td width = "200" id ={item.structure_name}>{item.structure_name}</td>
-                    <td width = "50">${item.structure_price}</td>
-                    <td width = "100"><input type = "number" placeholder="" name="update"/></td>
-                    <td width = "130">
+                    <td id ={item.structure_name}><Translate text={item.structure_name}/></td>
+                    <td>${item.structure_price}</td>
+                    <td><input type = "number" style={{width: "75%"}} placeholder="" name="update"/></td>
+                    <td>
                       <button
                         onClick={() => {
                           updateIngredient(item.structure_id);

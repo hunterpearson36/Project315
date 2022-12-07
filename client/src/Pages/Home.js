@@ -22,8 +22,9 @@ function Home() {
 }
 
 function isManager(){
+    var name = getCookie("USER_NAME");
     for(var i = 0; i < window.employee.length; i++){
-        if(window.employee[i].employee_is_admin === true){
+        if(window.employee[i].employee_name === name && window.employee[i].employee_is_admin === true){
             return true;
         }
     }
@@ -59,6 +60,7 @@ function isManager(){
     return <div>
       <GoogleMap mapContainerStyle={mapContainerStyle} zoom={17} center = {center} options = {options}>
         <Marker 
+          alt = "Chick-fil-A Map Marker"
           aria-label = "Chick-fil-A Marker"
           position={center}
           onClick={() => {

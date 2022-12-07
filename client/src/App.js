@@ -15,7 +15,7 @@ import OrderPlaced from "./Pages/OrderPlaced";
 import ItemStructures from "./Pages/ItemStructures";
 import IngredientsTable from "./Pages/IngredientsTable";
 import RestockIngredients from "./Pages/RestockIngredients";
-import Extra from "./Pages/Extra";
+import Employee from "./Pages/Employees";
 import AddItem from "./Pages/AddItem";
 import AddIngredient from "./Pages/AddIngredient";
 import Reports from "./Pages/Reports";
@@ -45,6 +45,7 @@ const App = () => {
         <Route path="/manager/ingredients-table/restock" element={<RestockIngredients />} />
         <Route path="/manager/add-item" element={<AddItem />} />
         <Route path="/manager/add-ingredient" element={<AddIngredient />} />
+        <Route path="/manager/employee" element={<Employee />} />
         <Route path="/manager/reports" element={<Reports />} />
         <Route path="/manager/reports/sales-report" element={<Sales />} />
         <Route path="/manager/reports/sales-report/report" element={<SalesReport />} />
@@ -52,7 +53,6 @@ const App = () => {
         <Route path="/manager/reports/excess-report/report" element={<ExcessReport />} />
         <Route path="/manager/reports/restock-report" element={<Restock />} />
         <Route path="/manager/reports/restock-report/report" element={<RestockReport />} />
-        <Route path="/extra" element={<Extra />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
   );
