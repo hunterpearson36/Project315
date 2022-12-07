@@ -59,6 +59,7 @@ function isManager(){
     return <div>
       <GoogleMap mapContainerStyle={mapContainerStyle} zoom={17} center = {center} options = {options}>
         <Marker 
+          aria-label = "Chick-fil-A Marker"
           position={center}
           onClick={() => {
               setSelected(true);

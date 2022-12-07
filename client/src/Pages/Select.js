@@ -37,6 +37,7 @@ function Home() {
       <GoogleMap mapContainerStyle={mapContainerStyle} zoom={17} center = {center} options = {options}>
         <Marker 
           position={center}
+          aria-label = "Chick-fil-A Marker"
           onClick={() => {
               setSelected(true);
           }}
