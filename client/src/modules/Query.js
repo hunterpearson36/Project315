@@ -10,7 +10,7 @@ async function sendQuery(query) {
   //console.log(`sending query "${query}" to server`);
   return new Promise((resolve) => {
     //fetch('http://localhost:5000/db/query', requestOptions)
-      fetch('https://project3-api-csg3.onrender.com/db/query', requestOptions)
+      fetch(process.env.QUERY_API_QUERY_API + '/db/query', requestOptions)
       .then(response => response.json())
       .then(data => {
         //console.log(JSON.stringify(data));
@@ -33,7 +33,7 @@ async function sendUpdate(query) {
   //console.log(`sending query "${query}" to server`);
   return new Promise((resolve) => {
     //fetch('http://localhost:5000/db/update', requestOptions)
-    fetch('https://project3-api-csg3.onrender.com/db/update', requestOptions)
+    fetch(process.env.QUERY_API_QUERY_API + '/db/update', requestOptions)
       .then(response => response.json())
       .then(data => {
         //console.log(JSON.stringify(data));
