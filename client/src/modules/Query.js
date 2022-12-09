@@ -10,7 +10,7 @@ async function sendQuery(query) {
   //console.log(`sending query "${query}" to server`);
   return new Promise((resolve) => {
     //fetch('http://localhost:5000/db/query', requestOptions)
-    console.log()
+    //console.log()
       fetch(process.env.REACT_APP_QUERY_API + '/db/query', requestOptions)
       .then(response => response.json())
       .then(data => {

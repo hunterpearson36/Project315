@@ -26,7 +26,7 @@ const PORT = 5000;
 // app routing
 
 app.listen(PORT, () => {
-    console.log("[app]::Listen:%s", PORT);
+    //console.log("[app]::Listen:%s", PORT);
 });
 
 app.get('/', (req, res) => {
